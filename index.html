@@ -46,196 +46,6 @@
             padding: 20px 15px 100px;
         }
 
-        /* ========== صفحة عنا الجديدة ========= */
-        .about-page {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            position: relative;
-        }
-
-        .about-page::before {
-            content: "﴾";
-            font-size: 200px;
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%) rotate(10deg);
-            color: rgba(212, 175, 55, 0.1);
-            font-family: 'Amiri', serif;
-            z-index: 1;
-        }
-
-        .about-page::after {
-            content: "﴿";
-            font-size: 200px;
-            position: absolute;
-            top: 50%;
-            left: 10px;
-            transform: translateY(-50%) rotate(-10deg);
-            color: rgba(212, 175, 55, 0.1);
-            font-family: 'Amiri', serif;
-            z-index: 1;
-        }
-
-        .about-card {
-            background: rgba(18, 55, 42, 0.7);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 2px solid #d4af37;
-            border-radius: 70px 70px 70px 70px / 50px 50px 50px 50px;
-            padding: 60px 50px;
-            max-width: 800px;
-            width: 100%;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-            box-shadow: 
-                0 0 0 5px rgba(26, 94, 75, 0.8),
-                0 0 0 10px rgba(212, 175, 55, 0.3),
-                0 30px 50px rgba(0, 0, 0, 0.5),
-                inset 0 0 30px rgba(212, 175, 55, 0.3);
-            animation: fadeInUp 1s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .about-icon {
-            font-size: 100px;
-            color: #d4af37;
-            margin-bottom: 20px;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            position: relative;
-            display: inline-block;
-        }
-
-        .about-icon::after {
-            content: "";
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            background: rgba(212, 175, 55, 0.2);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            filter: blur(15px);
-        }
-
-        .about-card h1 {
-            font-size: 52px;
-            color: #d4af37;
-            margin-bottom: 30px;
-            font-weight: 900;
-            text-shadow: 0 2px 5px #000;
-            border-bottom: 2px solid #d4af37;
-            padding-bottom: 20px;
-            font-family: 'Scheherazade New', serif;
-        }
-
-        .about-card .intro-text {
-            font-size: 32px;
-            color: #f5e7c8;
-            margin-bottom: 25px;
-            font-weight: 700;
-        }
-
-        .developer-name {
-            font-size: 48px;
-            color: #d4af37;
-            margin: 25px 0;
-            font-weight: 900;
-            text-shadow: 0 0 15px #d4af37;
-            background: linear-gradient(45deg, #f5e7c8, #d4af37);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .about-card .mission-text {
-            font-size: 32px;
-            line-height: 1.8;
-            color: #f5e7c8;
-            margin-bottom: 30px;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 25px;
-            border-radius: 60px;
-            border: 1px solid #d4af37;
-        }
-
-        .dua-box {
-            font-size: 28px;
-            background: rgba(212, 175, 55, 0.15);
-            padding: 20px;
-            border-radius: 50px;
-            margin: 30px 0;
-            border-right: 5px solid #d4af37;
-            border-left: 5px solid #d4af37;
-            color: #f5e7c8;
-        }
-
-        .start-btn {
-            background: linear-gradient(45deg, #d4af37, #b8860b);
-            border: none;
-            color: #0c4a3b;
-            font-size: 36px;
-            padding: 20px 60px;
-            border-radius: 80px;
-            cursor: pointer;
-            font-family: 'Amiri', serif;
-            font-weight: 900;
-            margin-top: 40px;
-            border: 2px solid #f5e7c8;
-            box-shadow: 
-                0 10px 0 #7a5c1a,
-                0 15px 25px rgba(0,0,0,0.5);
-            transition: all 0.2s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .start-btn::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .start-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 0 #7a5c1a, 0 20px 30px rgba(0,0,0,0.5);
-        }
-
-        .start-btn:hover::before {
-            left: 100%;
-        }
-
-        .start-btn:active {
-            transform: translateY(5px);
-            box-shadow: 0 5px 0 #7a5c1a, 0 15px 25px rgba(0,0,0,0.5);
-        }
-
-        .start-btn i {
-            margin-left: 15px;
-        }
-
-        /* ========== باقي التصميم ========= */
         header {
             text-align: center;
             padding: 30px 15px;
@@ -511,7 +321,6 @@
 
         .reciter-option:hover {
             background: #d4af37;
-            color: #0c4a3b;
         }
 
         .reciter-option:hover span {
@@ -522,6 +331,7 @@
             width: 45px;
             height: 45px;
             border-radius: 50%;
+            object-fit: cover;
             border: 2px solid #d4af37;
         }
 
@@ -832,6 +642,12 @@
             box-shadow: 0 2px 0 #7a5c1a, 0 8px 15px black;
         }
 
+        .player button:disabled {
+            opacity: 0.3;
+            transform: none;
+            box-shadow: 0 2px 0 #7a5c1a;
+        }
+
         .progress-area {
             flex: 1;
             display: flex;
@@ -944,15 +760,13 @@
 
         @media (max-width: 600px) {
             header { font-size: 36px; }
-            .about-card { padding: 30px 20px; }
-            .about-card h1 { font-size: 40px; }
-            .developer-name { font-size: 36px; }
-            .mission-text { font-size: 26px; }
-            .start-btn { font-size: 28px; padding: 15px 40px; }
             .surah-name { font-size: 22px; }
+            .surah-name-big { font-size: 32px; }
             .mushaf { font-size: 24px; padding: 30px 15px; }
             .reciter-name { font-size: 20px; }
             .player button { width: 50px; height: 50px; font-size: 24px; }
+            .reader-header { padding: 10px 15px; }
+            .back, .share-btn { font-size: 18px; padding: 8px 15px; }
         }
     </style>
 </head>
@@ -962,35 +776,8 @@
     </header>
 
     <div class="container">
-        <!-- صفحة عنا الجديدة - تظهر أول مرة -->
-        <div id="aboutPage" class="about-page">
-            <div class="about-card">
-                <div class="about-icon">
-                    <i class="fas fa-quran"></i>
-                </div>
-                <h1>بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</h1>
-                <p class="intro-text">تم التطوير هذا البرنامج من قبل</p>
-                <div class="developer-name">
-                    <i class="fas fa-user"></i> محمد زيدان
-                </div>
-                <div class="mission-text">
-                    <i class="fas fa-arrow-left"></i>
-                   قرار أنشأ برنامج للقران الكريم لنشر القران الكريم و اخذ الاجره و الثواب انشاء الله
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-                <div class="dua-box">
-                    <i class="fas fa-heart"></i>
-                  اللهم اجعله في ميزان حسناتي 
-                    <i class="fas fa-heart"></i>
-                </div>
-                <button class="start-btn" onclick="startApp()">
-                    <i class="fas fa-book-open"></i> افتح المصحف
-                </button>
-            </div>
-        </div>
-
         <!-- الصفحة الرئيسية -->
-        <div id="home" style="display: none;">
+        <div id="home">
             <div class="search-box">
                 <i class="fas fa-search"></i>
                 <input type="text" id="searchInput" placeholder="ابحث عن سورة...">
@@ -1009,30 +796,30 @@
                 </button>
                 
                 <div class="current-reciter" id="currentReciterBtn" onclick="toggleReciterDropdown()">
-                    <img id="currentReciterImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23d4af37'/%3E%3Ctext x='50' y='70' font-size='50' text-anchor='middle' fill='%230c4a3b' font-family='Arial'%3E📖%3C/text%3E%3C/svg%3E" alt="reciter" class="reciter-img">
+                    <img id="currentReciterImg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Mishari_Rashid_Alafasy.jpg/800px-Mishari_Rashid_Alafasy.jpg" alt="reciter" class="reciter-img" onerror="this.src='https://via.placeholder.com/50x50/0c4a3b/d4af37?text=📖'">
                     <span id="currentReciterName" class="reciter-name">مشاري العفاسي</span>
                     <i class="fas fa-chevron-down"></i>
                 </div>
 
                 <div id="reciterDropdown" class="reciter-dropdown">
-                    <div class="reciter-option" data-value="ar.alafasy" onclick="selectReciter('ar.alafasy', 'مشاري العفاسي')">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='45' height='45' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23d4af37'/%3E%3Ctext x='50' y='70' font-size='50' text-anchor='middle' fill='%230c4a3b' font-family='Arial'%3E📖%3C/text%3E%3C/svg%3E">
+                    <div class="reciter-option" data-value="ar.alafasy" data-name="مشاري العفاسي" data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Mishari_Rashid_Alafasy.jpg/800px-Mishari_Rashid_Alafasy.jpg" onclick="selectReciter('ar.alafasy', 'مشاري العفاسي', this.dataset.img)">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Mishari_Rashid_Alafasy.jpg/800px-Mishari_Rashid_Alafasy.jpg" onerror="this.src='https://via.placeholder.com/45x45/0c4a3b/d4af37?text=📖'">
                         <span>مشاري العفاسي</span>
                     </div>
-                    <div class="reciter-option" data-value="ar.abdulbasitmurattal" onclick="selectReciter('ar.abdulbasitmurattal', 'عبد الباسط عبد الصمد')">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='45' height='45' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23d4af37'/%3E%3Ctext x='50' y='70' font-size='50' text-anchor='middle' fill='%230c4a3b' font-family='Arial'%3E📖%3C/text%3E%3C/svg%3E">
+                    <div class="reciter-option" data-value="ar.abdulbasitmurattal" data-name="عبد الباسط عبد الصمد" data-img="https://upload.wikimedia.org/wikipedia/ar/thumb/5/5a/Abdulbasit_Abdusamad.jpg/800px-Abdulbasit_Abdusamad.jpg" onclick="selectReciter('ar.abdulbasitmurattal', 'عبد الباسط عبد الصمد', this.dataset.img)">
+                        <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/5/5a/Abdulbasit_Abdusamad.jpg/800px-Abdulbasit_Abdusamad.jpg" onerror="this.src='https://via.placeholder.com/45x45/0c4a3b/d4af37?text=📖'">
                         <span>عبد الباسط عبد الصمد</span>
                     </div>
-                    <div class="reciter-option" data-value="ar.mahermuaiqly" onclick="selectReciter('ar.mahermuaiqly', 'ماهر المعيقلي')">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='45' height='45' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23d4af37'/%3E%3Ctext x='50' y='70' font-size='50' text-anchor='middle' fill='%230c4a3b' font-family='Arial'%3E📖%3C/text%3E%3C/svg%3E">
+                    <div class="reciter-option" data-value="ar.mahermuaiqly" data-name="ماهر المعيقلي" data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Maher_Al_Muaiqly.jpg/800px-Maher_Al_Muaiqly.jpg" onclick="selectReciter('ar.mahermuaiqly', 'ماهر المعيقلي', this.dataset.img)">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Maher_Al_Muaiqly.jpg/800px-Maher_Al_Muaiqly.jpg" onerror="this.src='https://via.placeholder.com/45x45/0c4a3b/d4af37?text=📖'">
                         <span>ماهر المعيقلي</span>
                     </div>
-                    <div class="reciter-option" data-value="ar.minshawi" onclick="selectReciter('ar.minshawi', 'محمد صديق المنشاوي')">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='45' height='45' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23d4af37'/%3E%3Ctext x='50' y='70' font-size='50' text-anchor='middle' fill='%230c4a3b' font-family='Arial'%3E📖%3C/text%3E%3C/svg%3E">
+                    <div class="reciter-option" data-value="ar.minshawi" data-name="محمد صديق المنشاوي" data-img="https://upload.wikimedia.org/wikipedia/ar/thumb/5/5c/Mohamed_Siddiq_El-Minshawi.jpg/800px-Mohamed_Siddiq_El-Minshawi.jpg" onclick="selectReciter('ar.minshawi', 'محمد صديق المنشاوي', this.dataset.img)">
+                        <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/5/5c/Mohamed_Siddiq_El-Minshawi.jpg/800px-Mohamed_Siddiq_El-Minshawi.jpg" onerror="this.src='https://via.placeholder.com/45x45/0c4a3b/d4af37?text=📖'">
                         <span>محمد صديق المنشاوي</span>
                     </div>
-                    <div class="reciter-option" data-value="ar.hudhaify" onclick="selectReciter('ar.hudhaify', 'علي الحذيفي')">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='45' height='45' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23d4af37'/%3E%3Ctext x='50' y='70' font-size='50' text-anchor='middle' fill='%230c4a3b' font-family='Arial'%3E📖%3C/text%3E%3C/svg%3E">
+                    <div class="reciter-option" data-value="ar.hudhaify" data-name="علي الحذيفي" data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Ali_ibn_Abdul-Rahman_al-Hudhaifi.jpg/800px-Ali_ibn_Abdul-Rahman_al-Hudhaifi.jpg" onclick="selectReciter('ar.hudhaify', 'علي الحذيفي', this.dataset.img)">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Ali_ibn_Abdul-Rahman_al-Hudhaifi.jpg/800px-Ali_ibn_Abdul-Rahman_al-Hudhaifi.jpg" onerror="this.src='https://via.placeholder.com/45x45/0c4a3b/d4af37?text=📖'">
                         <span>علي الحذيفي</span>
                     </div>
                 </div>
@@ -1076,9 +863,9 @@
 
     <!-- مشغل الصوت -->
     <div class="player" id="player">
-        <button onclick="prevAyah()" id="prevBtn"><i class="fas fa-step-backward"></i></button>
-        <button onclick="togglePlay()" id="playPauseBtn"><i class="fas fa-play"></i></button>
-        <button onclick="nextAyah()" id="nextBtn"><i class="fas fa-step-forward"></i></button>
+        <button onclick="prevAyah()" id="prevBtn" title="الآية السابقة"><i class="fas fa-step-backward"></i></button>
+        <button onclick="togglePlay()" id="playPauseBtn" title="تشغيل/إيقاف"><i class="fas fa-play"></i></button>
+        <button onclick="nextAyah()" id="nextBtn" title="الآية التالية"><i class="fas fa-step-forward"></i></button>
         <div class="progress-area">
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
@@ -1102,10 +889,10 @@
         let allSurahs = [], ayahs = [], currentIndex = 0, currentSurahNumber = null, isPlaying = false;
         let currentReciter = localStorage.getItem('reciter') || 'ar.alafasy';
         let currentReciterName = localStorage.getItem('reciterName') || 'مشاري العفاسي';
+        let currentReciterImg = localStorage.getItem('reciterImg') || 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Mishari_Rashid_Alafasy.jpg/800px-Mishari_Rashid_Alafasy.jpg';
         let fontSize = parseInt(localStorage.getItem('fontSize')) || 32;
 
         // عناصر DOM
-        const aboutPage = document.getElementById('aboutPage');
         const homeDiv = document.getElementById('home');
         const readerDiv = document.getElementById('reader');
         const surahListDiv = document.getElementById('surahList');
@@ -1122,20 +909,15 @@
         const notification = document.getElementById('notification');
         const ayahCounter = document.getElementById('ayahCounter');
         const progressFill = document.getElementById('progressFill');
+        const currentReciterImgEl = document.getElementById('currentReciterImg');
         const currentReciterNameEl = document.getElementById('currentReciterName');
         const reciterDropdown = document.getElementById('reciterDropdown');
         const tafseerModal = document.getElementById('tafseerModal');
         const tafseerText = document.getElementById('tafseerText');
 
         // تعيين القارئ المحفوظ
+        currentReciterImgEl.src = currentReciterImg;
         currentReciterNameEl.textContent = currentReciterName;
-
-        // ========== بدء التطبيق ==========
-        function startApp() {
-            aboutPage.style.display = 'none';
-            homeDiv.style.display = 'block';
-            loadSurahs();
-        }
 
         // ========== تحميل السور ==========
         async function loadSurahs() {
@@ -1146,6 +928,13 @@
                 const data = await res.json();
                 allSurahs = data.data;
                 displaySurahs(allSurahs);
+                
+                // استعادة آخر سورة مفتوحة
+                const lastSurah = localStorage.getItem('lastSurah');
+                if (lastSurah) {
+                    const { number, name } = JSON.parse(lastSurah);
+                    setTimeout(() => openSurah(number, name), 500);
+                }
             } catch (e) {
                 surahListDiv.innerHTML = `<div class="error"><i class="fas fa-exclamation-triangle"></i> ${e.message}</div>`;
             }
@@ -1175,6 +964,7 @@
         // ========== فتح السورة ==========
         async function openSurah(number, name) {
             try {
+                localStorage.setItem('lastSurah', JSON.stringify({ number, name }));
                 homeDiv.style.display = 'none';
                 readerDiv.style.display = 'block';
                 surahNameSpan.innerHTML = `<i class="fas fa-quran"></i> سورة ${name}`;
@@ -1203,6 +993,7 @@
         function renderAyahs() {
             ayahContainer.innerHTML = '';
             
+            // إضافة البسملة إلا لسورة التوبة
             if (currentSurahNumber !== 9) {
                 const b = document.createElement('div');
                 b.className = 'bismillah';
@@ -1231,6 +1022,7 @@
                     e.stopPropagation();
                     showTafseer(a.number);
                 };
+                tafseerSpan.title = 'عرض التفسير';
                 
                 wrapper.appendChild(textSpan);
                 wrapper.appendChild(numberSpan);
@@ -1248,17 +1040,18 @@
                 tafseerText.textContent = 'جاري تحميل التفسير...';
                 tafseerModal.classList.add('show');
                 
-                const res = await fetch(`https://api.quran.com/api/v4/quran/tafsirs/7?verse_key=${ayahNumber}`);
+                // استخدام API القرآن للحصول على التفسير (مفسر السعدي)
+                const res = await fetch(`${API}/ayah/${ayahNumber}/ar.saadi`);
                 if (!res.ok) throw new Error('فشل تحميل التفسير');
                 const data = await res.json();
                 
-                if (data.tafsirs && data.tafsirs.length > 0) {
-                    const text = data.tafsirs[0].text.replace(/<[^>]*>/g, '');
-                    tafseerText.textContent = text;
+                if (data.data && data.data.text) {
+                    tafseerText.textContent = data.data.text;
                 } else {
                     tafseerText.textContent = 'لا يتوفر تفسير لهذه الآية';
                 }
             } catch (e) {
+                console.error('خطأ في التفسير:', e);
                 tafseerText.textContent = 'عذراً، حدث خطأ في تحميل التفسير';
                 showNotification('فشل تحميل التفسير', true);
             }
@@ -1268,6 +1061,7 @@
             tafseerModal.classList.remove('show');
         }
 
+        // إغلاق النافذة بالضغط خارجها
         window.onclick = function(event) {
             if (event.target === tafseerModal) {
                 closeTafseer();
@@ -1295,13 +1089,18 @@
             reciterDropdown.classList.toggle('show');
         };
 
-        window.selectReciter = function(value, name) {
+        window.selectReciter = function(value, name, img) {
             currentReciter = value;
             currentReciterName = name;
+            currentReciterImg = img;
             localStorage.setItem('reciter', value);
             localStorage.setItem('reciterName', name);
+            localStorage.setItem('reciterImg', img);
+            currentReciterImgEl.src = img;
             currentReciterNameEl.textContent = name;
             reciterDropdown.classList.remove('show');
+            
+            // إيقاف التشغيل الحالي
             if (!audio.paused) {
                 audio.pause();
                 playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
@@ -1310,6 +1109,7 @@
             audio.src = '';
         };
 
+        // إغلاق القائمة عند النقر خارجها
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.current-reciter') && !e.target.closest('.reciter-dropdown')) {
                 reciterDropdown.classList.remove('show');
@@ -1321,6 +1121,7 @@
             if (index < 0 || index >= ayahs.length) return;
             currentIndex = index;
             highlightAyah();
+            
             try {
                 playPauseBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
                 const ayahNumber = ayahs[index].number;
@@ -1331,6 +1132,7 @@
                 await audio.play();
                 playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
                 isPlaying = true;
+                
                 audio.onended = () => {
                     if (currentIndex < ayahs.length - 1) {
                         playAyah(currentIndex + 1);
@@ -1340,6 +1142,7 @@
                     }
                 };
             } catch (e) {
+                console.error('خطأ في تشغيل الصوت:', e);
                 showNotification('تعذر تشغيل الصوت', true);
                 playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
                 isPlaying = false;
@@ -1353,6 +1156,8 @@
                 current.classList.add('active');
                 current.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
+            updateButtonsState();
+            updateCounter();
         }
 
         function updateButtonsState() {
@@ -1378,8 +1183,11 @@
         window.togglePlay = function() {
             if (!ayahs.length) return;
             if (audio.paused) {
-                if (!audio.src) playAyah(currentIndex);
-                else audio.play();
+                if (!audio.src) {
+                    playAyah(currentIndex);
+                } else {
+                    audio.play();
+                }
             } else {
                 audio.pause();
             }
@@ -1418,6 +1226,7 @@
             isPlaying = false;
             playerDiv.classList.add('hidden');
             ayahs = [];
+            currentIndex = 0;
         };
 
         // ========== مشاركة السورة ==========
@@ -1443,7 +1252,7 @@
         };
         document.documentElement.style.setProperty('--font-size-base', fontSize + 'px');
 
-        // ========== البحث ==========
+        // ========== البحث مع تأخير ==========
         let searchTimeout;
         searchInput.addEventListener('input', () => {
             clearTimeout(searchTimeout);
@@ -1466,23 +1275,8 @@
             goTopBtn.classList.toggle('show', window.scrollY > 300);
         });
 
-        // ========== بدء التطبيق (صفحة عنا تظهر أولاً) ==========
-        if (!localStorage.getItem('appStarted')) {
-            aboutPage.style.display = 'flex';
-            homeDiv.style.display = 'none';
-            readerDiv.style.display = 'none';
-        } else {
-            aboutPage.style.display = 'none';
-            homeDiv.style.display = 'block';
-            loadSurahs();
-        }
-
-        window.startApp = function() {
-            localStorage.setItem('appStarted', 'true');
-            aboutPage.style.display = 'none';
-            homeDiv.style.display = 'block';
-            loadSurahs();
-        };
+        // ========== بدء التطبيق ==========
+        loadSurahs();
     </script>
 </body>
 </html>
