@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>القرآن الكريم - المصحف الذهبي</title>
+    <title>القرآن الكريم - المصحف الشريف</title>
     <!-- الخطوط -->
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
     <!-- أيقونات Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -17,12 +16,14 @@
         }
 
         body {
-            font-family: 'Amiri', 'Scheherazade New', serif;
-            background: linear-gradient(135deg, #0c4a3b 0%, #1a5e4b 50%, #0f4637 100%);
+            font-family: 'Amiri', serif;
+            background: #0a3b2e;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path d="M20 20 L30 10 L40 20 L50 5 L60 20 L70 8 L80 20 L85 15 L90 20 L82 35 L90 50 L80 60 L70 50 L60 70 L50 55 L40 70 L30 55 L20 70 L10 50 L20 35 L10 20 L20 20" fill="none" stroke="%23e6d5a8" stroke-width="1"/><circle cx="50" cy="30" r="2" fill="%23e6d5a8"/><circle cx="30" cy="50" r="2" fill="%23e6d5a8"/><circle cx="70" cy="50" r="2" fill="%23e6d5a8"/></svg>');
+            background-repeat: repeat;
             min-height: 100vh;
-            color: #f5e7c8;
+            padding-bottom: 120px;
+            color: #f0ecd9;
             position: relative;
-            overflow-x: hidden;
         }
 
         body::before {
@@ -32,234 +33,207 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.08"><path d="M70 30 L90 10 L110 30 L130 15 L150 30 L170 20 L190 30 L180 50 L190 70 L170 90 L150 80 L130 100 L110 90 L90 100 L70 80 L50 90 L30 70 L40 50 L30 30 L50 20 L70 30" fill="none" stroke="%23d4af37" stroke-width="2"/><circle cx="100" cy="50" r="5" fill="%23d4af37"/><circle cx="60" cy="70" r="5" fill="%23d4af37"/><circle cx="140" cy="70" r="5" fill="%23d4af37"/><path d="M100 120 L105 130 L100 140 L95 130 L100 120" fill="%23d4af37"/></svg>');
-            background-repeat: repeat;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .container {
-            position: relative;
-            z-index: 2;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px 15px 100px;
+            background: rgba(10, 59, 46, 0.88);
+            z-index: -1;
         }
 
         header {
             text-align: center;
-            padding: 30px 15px;
-            font-size: 48px;
-            color: #d4af37;
-            text-shadow: 0 2px 10px #000, 0 0 20px #d4af37;
-            letter-spacing: 2px;
-            background: rgba(18, 55, 42, 0.6);
-            backdrop-filter: blur(10px);
-            border-bottom: 3px solid #d4af37;
-            margin-bottom: 30px;
-            border-radius: 0 0 50px 50px;
-            position: relative;
-            z-index: 10;
+            padding: 25px 15px;
+            font-size: 42px;
+            color: #e0cf9b;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+            background: linear-gradient(180deg, #1d5e45, transparent);
+            border-bottom: 2px solid #b69b4c;
+            font-weight: 900;
         }
 
         header i {
-            margin: 0 15px;
-            color: #d4af37;
-            animation: sparkle 2s infinite;
+            margin: 0 8px;
+            color: #e0cf9b;
         }
 
-        @keyframes sparkle {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.2); }
+        .container {
+            max-width: 950px;
+            margin: auto;
+            padding: 15px;
         }
 
+        /* مربع البحث */
         .search-box {
-            background: rgba(18, 55, 42, 0.7);
-            backdrop-filter: blur(10px);
-            border: 2px solid #d4af37;
-            border-radius: 60px;
-            padding: 5px 20px;
-            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(4px);
+            border: 1px solid #b69b4c;
+            border-radius: 50px;
+            padding: 3px 15px;
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 20, 0, 0.3);
         }
 
         .search-box i {
-            font-size: 24px;
-            color: #d4af37;
-            margin-left: 15px;
+            font-size: 20px;
+            color: #b69b4c;
+            margin-left: 10px;
         }
 
         .search-box input {
             background: transparent;
             border: none;
             width: 100%;
-            padding: 15px 0;
-            font-size: 24px;
-            color: #f5e7c8;
+            padding: 12px 0;
+            font-size: 22px;
+            color: #f0ecd9;
             outline: none;
             font-family: 'Amiri', serif;
         }
 
         .search-box input::placeholder {
-            color: #b8a87b;
+            color: #8fa98c;
+            opacity: 0.7;
         }
 
+        /* عنوان القائمة */
         .list-header {
             text-align: center;
-            margin: 40px 0 30px;
+            margin: 30px 0 20px;
         }
 
         .list-header h2 {
-            font-size: 42px;
-            color: #d4af37;
-            background: rgba(18, 55, 42, 0.7);
-            backdrop-filter: blur(10px);
+            font-size: 36px;
+            color: #e0cf9b;
+            background: rgba(26, 68, 50, 0.6);
             display: inline-block;
-            padding: 15px 50px;
-            border-radius: 80px;
-            border: 2px solid #d4af37;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            padding: 8px 40px;
+            border-radius: 60px;
+            border: 1px solid #b69b4c;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 3px 10px #1a3326;
         }
 
+        /* قائمة السور */
         #surahList {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .surah-card {
-            background: rgba(18, 55, 42, 0.7);
-            backdrop-filter: blur(10px);
-            border: 2px solid #d4af37;
-            color: #f5e7c8;
-            padding: 20px 25px;
-            border-radius: 50px;
+            background: rgba(26, 68, 50, 0.6);
+            backdrop-filter: blur(4px);
+            border: 1px solid #b69b4c;
+            color: #f0e7c0;
+            padding: 18px 25px;
+            border-radius: 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .surah-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 5px;
-            height: 100%;
-            background: #d4af37;
-            transition: width 0.3s ease;
+            transition: 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-bottom: 2px solid #b69b4c;
         }
 
         .surah-card:hover {
-            transform: translateY(-5px) translateX(-5px);
-            background: rgba(26, 75, 58, 0.9);
-            border-color: #f5e7c8;
-            box-shadow: 0 15px 25px rgba(0,0,0,0.5);
-        }
-
-        .surah-card:hover::before {
-            width: 100%;
-            opacity: 0.1;
+            transform: translateY(-3px);
+            background: rgba(36, 94, 70, 0.8);
+            border-color: #e0cf9b;
+            box-shadow: 0 8px 18px #153f2b;
         }
 
         .surah-name {
-            font-size: 28px;
+            font-size: 26px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            position: relative;
-            z-index: 2;
+            gap: 10px;
         }
 
         .surah-name i {
-            color: #d4af37;
-            font-size: 28px;
+            color: #b69b4c;
+            font-size: 26px;
         }
 
         .surah-number {
-            background: #d4af37;
-            color: #0c4a3b;
-            min-width: 50px;
-            height: 50px;
+            background: #b69b4c;
+            color: #0a3b2e;
+            min-width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
             font-size: 22px;
             font-weight: 900;
-            border: 2px solid #f5e7c8;
-            position: relative;
-            z-index: 2;
+            border: 2px solid #e0cf9b;
         }
 
         .surah-meta {
             display: flex;
             align-items: center;
             gap: 15px;
-            position: relative;
-            z-index: 2;
         }
 
         .ayah-count {
-            background: rgba(212, 175, 55, 0.2);
-            color: #d4af37;
-            padding: 8px 20px;
-            border-radius: 40px;
-            font-size: 20px;
-            border: 1px solid #d4af37;
+            background: rgba(182, 155, 76, 0.2);
+            color: #e0cf9b;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 18px;
+            border: 1px solid #b69b4c;
         }
 
+        /* رأس القارئ */
         .reader-header {
-            background: rgba(18, 55, 42, 0.8);
-            backdrop-filter: blur(15px);
+            background: rgba(26, 68, 50, 0.8);
+            backdrop-filter: blur(8px);
             padding: 15px 25px;
-            border-radius: 80px;
-            border: 2px solid #d4af37;
+            border-radius: 70px;
+            border: 2px solid #b69b4c;
             display: flex;
             align-items: center;
             gap: 15px;
             flex-wrap: wrap;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
         .back, .share-btn {
-            background: #0c4a3b;
-            border: 2px solid #d4af37;
-            padding: 12px 25px;
-            border-radius: 60px;
-            color: #f5e7c8;
+            background: #1d5e45;
+            border: 1px solid #b69b4c;
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: #f0e7c0;
             cursor: pointer;
-            font-size: 24px;
-            transition: all 0.2s ease;
+            font-size: 22px;
+            transition: 0.2s;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+        }
+
+        .share-btn {
+            background: #2a6b4e;
         }
 
         .back:hover, .share-btn:hover {
-            background: #d4af37;
-            color: #0c4a3b;
-            transform: translateX(-5px);
+            background: #b69b4c;
+            color: #0a3b2e;
+            transform: translateX(-3px);
         }
 
+        /* القارئ الحالي */
         .current-reciter {
             flex: 1;
             display: flex;
             align-items: center;
-            gap: 15px;
-            background: rgba(0, 0, 0, 0.3);
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.2);
             padding: 8px 20px;
             border-radius: 60px;
             cursor: pointer;
-            border: 1px solid #d4af37;
+            border: 1px solid #b69b4c;
             position: relative;
         }
 
@@ -268,44 +242,39 @@
             height: 50px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #d4af37;
+            border: 2px solid #b69b4c;
         }
 
         .reciter-name {
-            font-size: 26px;
-            color: #d4af37;
+            font-size: 24px;
+            color: #e0cf9b;
         }
 
+        .current-reciter i {
+            margin-right: auto;
+            color: #b69b4c;
+            font-size: 18px;
+        }
+
+        /* القائمة المنسدلة للقراء */
         .reciter-dropdown {
             position: absolute;
             top: 100%;
             right: 0;
             left: 0;
             margin-top: 10px;
-            background: rgba(12, 74, 59, 0.98);
-            backdrop-filter: blur(15px);
-            border: 2px solid #d4af37;
+            background: rgba(10, 59, 46, 0.98);
+            backdrop-filter: blur(10px);
+            border: 2px solid #b69b4c;
             border-radius: 40px;
             padding: 15px;
             z-index: 100;
             display: none;
-            box-shadow: 0 20px 30px rgba(0,0,0,0.4);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
         }
 
         .reciter-dropdown.show {
             display: block;
-            animation: slideDown 0.3s ease;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .reciter-option {
@@ -314,17 +283,21 @@
             gap: 15px;
             padding: 12px 20px;
             border-radius: 50px;
-            transition: all 0.2s ease;
+            transition: 0.2s;
             cursor: pointer;
-            border-bottom: 1px solid #d4af37;
+            border-bottom: 1px solid #b69b4c;
+        }
+
+        .reciter-option:last-child {
+            border-bottom: none;
         }
 
         .reciter-option:hover {
-            background: #d4af37;
+            background: #b69b4c;
         }
 
         .reciter-option:hover span {
-            color: #0c4a3b;
+            color: #0a3b2e;
         }
 
         .reciter-option img {
@@ -332,122 +305,110 @@
             height: 45px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #d4af37;
+            border: 2px solid #b69b4c;
         }
 
         .reciter-option span {
-            font-size: 24px;
-            color: #f5e7c8;
+            font-size: 22px;
+            color: #f0e7c0;
         }
 
+        /* رأس السورة */
         .surah-info {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 25px;
+            gap: 20px;
             flex-wrap: wrap;
             margin: 20px 0 15px;
         }
 
         .surah-name-big {
-            font-size: 48px;
-            color: #d4af37;
-            text-shadow: 0 0 15px #d4af37;
+            font-size: 40px;
+            color: #e0cf9b;
+            text-shadow: 0 2px 6px #1a3b2c;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
         }
 
         .surah-stats {
-            font-size: 26px;
-            background: rgba(212, 175, 55, 0.2);
-            padding: 8px 25px;
-            border-radius: 60px;
-            border: 1px solid #d4af37;
+            font-size: 22px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 6px 20px;
+            border-radius: 50px;
+            border: 1px solid #b69b4c;
         }
 
         .font-controls {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             margin-right: auto;
         }
 
         .font-controls button {
-            background: #0c4a3b;
-            border: 2px solid #d4af37;
-            color: #d4af37;
-            width: 50px;
-            height: 50px;
+            background: #2a6b4e;
+            border: 1px solid #b69b4c;
+            color: #e0cf9b;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            font-size: 24px;
+            font-size: 22px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: 0.2s;
         }
 
         .font-controls button:hover {
-            background: #d4af37;
-            color: #0c4a3b;
-            transform: scale(1.1);
+            background: #b69b4c;
+            color: #0a3b2e;
+            transform: scale(1.05);
         }
 
-        .islamic-pattern {
-            height: 15px;
-            background: repeating-linear-gradient(45deg, #d4af37 0px, #d4af37 10px, #0c4a3b 10px, #0c4a3b 20px);
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-
+        /* المصحف */
         .mushaf {
-            background: #fbf3dd;
-            padding: 50px 35px;
-            border-radius: 60px 60px 30px 30px;
-            line-height: 3.2;
-            font-size: var(--font-size-base, 32px);
+            background: #fbf5e0;
+            padding: 40px 30px;
+            border-radius: 50px 50px 30px 30px;
+            line-height: 3;
+            font-size: var(--font-size-base, 30px);
             text-align: right;
-            box-shadow: 
-                0 0 0 8px #1a5e4b,
-                0 0 0 16px #d4af37,
-                0 20px 40px rgba(0,0,0,0.6);
+            box-shadow: 0 0 0 5px #2a6b4e, 0 0 0 10px #b69b4c, 0 15px 30px rgba(0, 30, 0, 0.6);
             color: #1e3a2b;
-            margin-top: 25px;
+            margin-top: 20px;
             transition: font-size 0.1s;
             position: relative;
-            font-family: 'Amiri', 'Scheherazade New', serif;
         }
 
         .mushaf::before {
             content: "﴿";
-            font-size: 90px;
-            color: #d4af37;
+            font-size: 70px;
+            color: #b69b4c;
             position: absolute;
-            top: -25px;
-            right: 30px;
-            opacity: 0.5;
-            transform: rotate(5deg);
-            text-shadow: 0 0 10px #1a5e4b;
+            top: -20px;
+            right: 25px;
+            opacity: 0.4;
+            transform: rotate(8deg);
         }
 
         .mushaf::after {
             content: "﴾";
-            font-size: 90px;
-            color: #d4af37;
+            font-size: 70px;
+            color: #b69b4c;
             position: absolute;
-            bottom: -25px;
-            left: 30px;
-            opacity: 0.5;
-            transform: rotate(-5deg);
-            text-shadow: 0 0 10px #1a5e4b;
+            bottom: -20px;
+            left: 25px;
+            opacity: 0.4;
+            transform: rotate(-8deg);
         }
 
         .bismillah {
-            font-size: 52px;
-            color: #d4af37;
-            margin-bottom: 30px;
-            font-weight: 900;
-            border-bottom: 2px dashed #d4af37;
+            font-size: 45px;
+            color: #2a6b4e;
+            margin-bottom: 25px;
+            font-weight: 700;
+            border-bottom: 1px dashed #b69b4c;
             padding-bottom: 15px;
             text-align: center;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
         }
 
         .ayah-wrapper {
@@ -458,30 +419,29 @@
         .ayah-text {
             display: inline;
             cursor: pointer;
-            padding: 2px 6px;
-            border-radius: 12px;
+            padding: 4px 8px;
+            border-radius: 15px;
             transition: all 0.2s ease;
         }
 
         .ayah-text:hover {
-            background: rgba(212, 175, 55, 0.2);
+            background: rgba(42, 107, 78, 0.15);
         }
 
         .ayah-number-badge {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background-color: #d4af37;
-            color: #0c4a3b;
-            width: 34px;
-            height: 34px;
+            background-color: #b69b4c;
+            color: #0a3b2e;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             font-size: 16px;
-            margin: 0 6px 0 12px;
-            border: 2px solid #1a5e4b;
+            margin: 0 5px 0 10px;
+            border: 2px solid #2a6b4e;
             font-weight: 900;
             vertical-align: middle;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .tafseer-btn {
@@ -489,32 +449,33 @@
             align-items: center;
             justify-content: center;
             background: transparent;
-            border: 2px solid #d4af37;
-            color: #1a5e4b;
-            width: 30px;
-            height: 30px;
+            border: 2px solid #b69b4c;
+            color: #2a6b4e;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
-            font-size: 14px;
-            margin: 0 4px;
+            font-size: 12px;
+            margin: 0 3px;
             cursor: pointer;
             transition: all 0.3s ease;
             vertical-align: middle;
         }
 
         .tafseer-btn:hover {
-            background: #d4af37;
-            color: #0c4a3b;
+            background: #b69b4c;
+            color: #0a3b2e;
             transform: rotate(180deg) scale(1.1);
         }
 
         .active {
-            background: linear-gradient(145deg, #d4af37, #1a5e4b);
-            color: #fbf3dd !important;
-            box-shadow: 0 0 25px #d4af37;
-            border-radius: 40px;
-            padding: 6px 20px;
+            background: linear-gradient(145deg, #b69b4c, #2a6b4e);
+            color: #fbf5e0 !important;
+            box-shadow: 0 0 20px #b69b4c;
+            border-radius: 35px;
+            padding: 4px 18px;
         }
 
+        /* نافذة التفسير */
         .modal {
             display: none;
             position: fixed;
@@ -526,7 +487,7 @@
             z-index: 3000;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(5px);
         }
 
         .modal.show {
@@ -540,16 +501,16 @@
         }
 
         .modal-content {
-            background: #fbf3dd;
+            background: #fbf5e0;
             color: #1e3a2b;
             max-width: 700px;
             width: 95%;
-            max-height: 85vh;
+            max-height: 80vh;
             overflow-y: auto;
-            border-radius: 70px;
-            padding: 40px;
-            border: 8px solid #d4af37;
-            box-shadow: 0 0 0 8px #1a5e4b, 0 30px 50px rgba(0,0,0,0.6);
+            border-radius: 60px;
+            padding: 35px;
+            border: 5px solid #b69b4c;
+            box-shadow: 0 0 0 5px #2a6b4e, 0 20px 40px rgba(0,0,0,0.5);
             position: relative;
             text-align: right;
         }
@@ -558,145 +519,143 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             padding-bottom: 15px;
-            border-bottom: 3px solid #d4af37;
-            font-size: 32px;
-            color: #1a5e4b;
+            border-bottom: 2px solid #b69b4c;
+            font-size: 30px;
+            color: #2a6b4e;
             font-weight: 900;
         }
 
         .modal-close {
-            background: #1a5e4b;
-            border: 2px solid #d4af37;
-            color: #d4af37;
-            width: 50px;
-            height: 50px;
+            background: #2a6b4e;
+            border: 2px solid #b69b4c;
+            color: #b69b4c;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 24px;
-            transition: all 0.2s ease;
+            font-size: 22px;
+            transition: 0.2s;
         }
 
         .modal-close:hover {
-            background: #d4af37;
-            color: #1a5e4b;
+            background: #b69b4c;
+            color: #2a6b4e;
             transform: rotate(90deg);
         }
 
         .tafseer-text {
-            font-size: 26px;
-            line-height: 2;
+            font-size: 24px;
+            line-height: 1.8;
             color: #1e3a2b;
         }
 
+        /* المشغل */
         .player {
             position: fixed;
-            bottom: 25px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 95%;
-            max-width: 800px;
-            background: rgba(12, 74, 59, 0.98);
-            backdrop-filter: blur(15px);
-            border: 2px solid #d4af37;
-            border-radius: 100px;
-            padding: 15px 25px;
+            width: 94%;
+            max-width: 750px;
+            background: rgba(10, 45, 35, 0.98);
+            backdrop-filter: blur(12px);
+            border: 2px solid #b69b4c;
+            border-radius: 90px;
+            padding: 12px 25px;
             display: flex;
             align-items: center;
             gap: 15px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 0 2px #d4af37 inset;
+            box-shadow: 0 10px 30px #0a251d;
             z-index: 2000;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
 
         .player.hidden {
             opacity: 0;
             visibility: hidden;
-            transform: translateX(-50%) translateY(30px);
+            transform: translateX(-50%) translateY(20px);
         }
 
         .player button {
-            background: linear-gradient(145deg, #d4af37, #b8860b);
+            background: linear-gradient(145deg, #b69b4c, #2a6b4e);
             border: none;
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
-            font-size: 28px;
+            font-size: 26px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            color: #0c4a3b;
-            box-shadow: 0 6px 0 #7a5c1a, 0 8px 15px black;
+            transition: 0.2s;
+            color: #0a3b2e;
+            box-shadow: 0 4px 0 #1a4a33, 0 6px 12px black;
         }
 
         .player button:hover:not(:disabled) {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 0 #7a5c1a, 0 12px 20px black;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #1a4a33, 0 10px 16px black;
         }
 
         .player button:active:not(:disabled) {
-            transform: translateY(4px);
-            box-shadow: 0 2px 0 #7a5c1a, 0 8px 15px black;
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #1a4a33, 0 8px 12px black;
         }
 
         .player button:disabled {
             opacity: 0.3;
-            transform: none;
-            box-shadow: 0 2px 0 #7a5c1a;
+            box-shadow: 0 2px 0 #1a4a33;
         }
 
         .progress-area {
             flex: 1;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
         }
 
         .progress-bar {
             flex: 1;
-            height: 8px;
-            background: #1a5e4b;
+            height: 6px;
+            background: #1d4a38;
             border-radius: 10px;
             overflow: hidden;
-            border: 1px solid #d4af37;
         }
 
         .progress-fill {
             height: 100%;
             width: 0%;
-            background: #d4af37;
+            background: #b69b4c;
             border-radius: 10px;
-            transition: width 0.3s ease;
         }
 
         .ayah-counter {
-            color: #d4af37;
-            font-size: 20px;
-            min-width: 90px;
+            color: #e0cf9b;
+            font-size: 18px;
+            min-width: 80px;
             text-align: center;
-            font-weight: 700;
         }
 
+        /* أزرار مساعدة */
         .go-top {
             position: fixed;
-            bottom: 120px;
-            left: 25px;
-            background: #d4af37;
-            color: #0c4a3b;
-            width: 60px;
-            height: 60px;
+            bottom: 100px;
+            left: 20px;
+            background: #2a6b4e;
+            color: #b69b4c;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
+            font-size: 28px;
             cursor: pointer;
-            border: 3px solid #1a5e4b;
-            box-shadow: 0 6px 0 #7a5c1a, 0 10px 20px black;
-            transition: all 0.2s ease;
+            border: 2px solid #b69b4c;
+            box-shadow: 0 4px 12px black;
+            transition: 0.2s;
             opacity: 0;
             visibility: hidden;
             z-index: 1500;
@@ -708,49 +667,49 @@
         }
 
         .go-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 0 #7a5c1a, 0 15px 25px black;
+            background: #b69b4c;
+            color: #0a3b2e;
+            transform: scale(1.07);
         }
 
         .notification {
             position: fixed;
-            bottom: 120px;
+            bottom: 100px;
             left: 50%;
             transform: translateX(-50%);
-            background: #d4af37;
-            color: #0c4a3b;
-            padding: 15px 35px;
-            border-radius: 80px;
-            border: 3px solid #1a5e4b;
-            font-size: 24px;
-            z-index: 3000;
+            background: #b69b4c;
+            color: #0a3b2e;
+            padding: 15px 30px;
+            border-radius: 60px;
+            border: 2px solid #2a6b4e;
+            font-size: 22px;
+            z-index: 4000;
             display: none;
             font-weight: 700;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .loader, .error {
             text-align: center;
-            padding: 50px;
-            font-size: 30px;
-            background: rgba(18, 55, 42, 0.5);
-            backdrop-filter: blur(10px);
-            border-radius: 60px;
-            margin: 30px 0;
-            border: 2px solid #d4af37;
+            padding: 40px;
+            font-size: 26px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 50px;
+            margin: 20px 0;
         }
 
         .loader {
-            color: #d4af37;
+            color: #e0cf9b;
         }
 
         .loader i {
             animation: spin 1.5s infinite linear;
-            margin-left: 15px;
+            margin-left: 10px;
         }
 
         .error {
             color: #ffaa7a;
+            border: 1px solid #c47a5b;
         }
 
         @keyframes spin {
@@ -758,21 +717,27 @@
             100% { transform: rotate(360deg); }
         }
 
+        .islamic-pattern {
+            height: 12px;
+            background: repeating-linear-gradient(45deg, #b69b4c 0px, #b69b4c 8px, #2a6b4e 8px, #2a6b4e 16px);
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
         @media (max-width: 600px) {
-            header { font-size: 36px; }
+            header { font-size: 32px; }
             .surah-name { font-size: 22px; }
             .surah-name-big { font-size: 32px; }
-            .mushaf { font-size: 24px; padding: 30px 15px; }
+            .mushaf { font-size: 24px; padding: 30px 20px; }
             .reciter-name { font-size: 20px; }
-            .player button { width: 50px; height: 50px; font-size: 24px; }
-            .reader-header { padding: 10px 15px; }
+            .player button { width: 45px; height: 45px; font-size: 22px; }
             .back, .share-btn { font-size: 18px; padding: 8px 15px; }
         }
     </style>
 </head>
 <body>
     <header>
-        <i class="fas fa-star"></i> القرآن الكريم <i class="fas fa-star"></i>
+        <i class="fas fa-mosque"></i> القرآن الكريم <i class="fas fa-star"></i>
     </header>
 
     <div class="container">
@@ -796,31 +761,27 @@
                 </button>
                 
                 <div class="current-reciter" id="currentReciterBtn" onclick="toggleReciterDropdown()">
-                    <img id="currentReciterImg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Mishari_Rashid_Alafasy.jpg/800px-Mishari_Rashid_Alafasy.jpg" alt="reciter" class="reciter-img" onerror="this.src='https://via.placeholder.com/50x50/0c4a3b/d4af37?text=📖'">
+                    <img id="currentReciterImg" src="1.jpeg" alt="reciter" class="reciter-img" onerror="this.src='https://via.placeholder.com/50x50/0a3b2e/b69b4c?text=📖'">
                     <span id="currentReciterName" class="reciter-name">مشاري العفاسي</span>
                     <i class="fas fa-chevron-down"></i>
                 </div>
 
                 <div id="reciterDropdown" class="reciter-dropdown">
-                    <div class="reciter-option" data-value="ar.alafasy" data-name="مشاري العفاسي" data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Mishari_Rashid_Alafasy.jpg/800px-Mishari_Rashid_Alafasy.jpg" onclick="selectReciter('ar.alafasy', 'مشاري العفاسي', this.dataset.img)">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Mishari_Rashid_Alafasy.jpg/800px-Mishari_Rashid_Alafasy.jpg" onerror="this.src='https://via.placeholder.com/45x45/0c4a3b/d4af37?text=📖'">
+                    <div class="reciter-option" onclick="selectReciter('ar.alafasy', 'مشاري العفاسي', '1.jpeg')">
+                        <img src="1.jpeg" onerror="this.src='https://via.placeholder.com/45x45/0a3b2e/b69b4c?text=📖'">
                         <span>مشاري العفاسي</span>
                     </div>
-                    <div class="reciter-option" data-value="ar.abdulbasitmurattal" data-name="عبد الباسط عبد الصمد" data-img="https://upload.wikimedia.org/wikipedia/ar/thumb/5/5a/Abdulbasit_Abdusamad.jpg/800px-Abdulbasit_Abdusamad.jpg" onclick="selectReciter('ar.abdulbasitmurattal', 'عبد الباسط عبد الصمد', this.dataset.img)">
-                        <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/5/5a/Abdulbasit_Abdusamad.jpg/800px-Abdulbasit_Abdusamad.jpg" onerror="this.src='https://via.placeholder.com/45x45/0c4a3b/d4af37?text=📖'">
+                    <div class="reciter-option" onclick="selectReciter('ar.abdulbasitmurattal', 'عبد الباسط عبد الصمد', '2.jpeg')">
+                        <img src="2.jpeg" onerror="this.src='https://via.placeholder.com/45x45/0a3b2e/b69b4c?text=📖'">
                         <span>عبد الباسط عبد الصمد</span>
                     </div>
-                    <div class="reciter-option" data-value="ar.mahermuaiqly" data-name="ماهر المعيقلي" data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Maher_Al_Muaiqly.jpg/800px-Maher_Al_Muaiqly.jpg" onclick="selectReciter('ar.mahermuaiqly', 'ماهر المعيقلي', this.dataset.img)">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Maher_Al_Muaiqly.jpg/800px-Maher_Al_Muaiqly.jpg" onerror="this.src='https://via.placeholder.com/45x45/0c4a3b/d4af37?text=📖'">
+                    <div class="reciter-option" onclick="selectReciter('ar.mahermuaiqly', 'ماهر المعيقلي', '3.jpeg')">
+                        <img src="3.jpeg" onerror="this.src='https://via.placeholder.com/45x45/0a3b2e/b69b4c?text=📖'">
                         <span>ماهر المعيقلي</span>
                     </div>
-                    <div class="reciter-option" data-value="ar.minshawi" data-name="محمد صديق المنشاوي" data-img="https://upload.wikimedia.org/wikipedia/ar/thumb/5/5c/Mohamed_Siddiq_El-Minshawi.jpg/800px-Mohamed_Siddiq_El-Minshawi.jpg" onclick="selectReciter('ar.minshawi', 'محمد صديق المنشاوي', this.dataset.img)">
-                        <img src="https://upload.wikimedia.org/wikipedia/ar/thumb/5/5c/Mohamed_Siddiq_El-Minshawi.jpg/800px-Mohamed_Siddiq_El-Minshawi.jpg" onerror="this.src='https://via.placeholder.com/45x45/0c4a3b/d4af37?text=📖'">
+                    <div class="reciter-option" onclick="selectReciter('ar.minshawi', 'محمد صديق المنشاوي', '4.jpeg')">
+                        <img src="4.jpeg" onerror="this.src='https://via.placeholder.com/45x45/0a3b2e/b69b4c?text=📖'">
                         <span>محمد صديق المنشاوي</span>
-                    </div>
-                    <div class="reciter-option" data-value="ar.hudhaify" data-name="علي الحذيفي" data-img="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Ali_ibn_Abdul-Rahman_al-Hudhaifi.jpg/800px-Ali_ibn_Abdul-Rahman_al-Hudhaifi.jpg" onclick="selectReciter('ar.hudhaify', 'علي الحذيفي', this.dataset.img)">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Ali_ibn_Abdul-Rahman_al-Hudhaifi.jpg/800px-Ali_ibn_Abdul-Rahman_al-Hudhaifi.jpg" onerror="this.src='https://via.placeholder.com/45x45/0c4a3b/d4af37?text=📖'">
-                        <span>علي الحذيفي</span>
                     </div>
                 </div>
 
@@ -843,12 +804,12 @@
             <div class="islamic-pattern"></div>
 
             <div class="mushaf" id="ayahContainer" style="font-size: var(--font-size-base);">
-                <div class="loader"><i class="fas fa-spinner fa-spin"></i> جاري التحميل...</div>
+                <div class="loader"><i class="fas fa-spinner fa-spin"></i> جاري تحميل السورة...</div>
             </div>
         </div>
     </div>
 
-    <!-- نافذة التفسير -->
+    <!-- نافذة التفسير المنبثقة -->
     <div class="modal" id="tafseerModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -867,18 +828,14 @@
         <button onclick="togglePlay()" id="playPauseBtn" title="تشغيل/إيقاف"><i class="fas fa-play"></i></button>
         <button onclick="nextAyah()" id="nextBtn" title="الآية التالية"><i class="fas fa-step-forward"></i></button>
         <div class="progress-area">
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
             <span class="ayah-counter" id="ayahCounter">0/0</span>
         </div>
         <audio id="audio" preload="none"></audio>
     </div>
 
     <!-- زر العودة للأعلى -->
-    <div class="go-top" id="goTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-        <i class="fas fa-arrow-up"></i>
-    </div>
+    <div class="go-top" id="goTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
     <!-- إشعارات -->
     <div class="notification" id="notification"></div>
@@ -889,8 +846,8 @@
         let allSurahs = [], ayahs = [], currentIndex = 0, currentSurahNumber = null, isPlaying = false;
         let currentReciter = localStorage.getItem('reciter') || 'ar.alafasy';
         let currentReciterName = localStorage.getItem('reciterName') || 'مشاري العفاسي';
-        let currentReciterImg = localStorage.getItem('reciterImg') || 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Mishari_Rashid_Alafasy.jpg/800px-Mishari_Rashid_Alafasy.jpg';
-        let fontSize = parseInt(localStorage.getItem('fontSize')) || 32;
+        let currentReciterImg = localStorage.getItem('reciterImg') || '1.jpeg';
+        let fontSize = parseInt(localStorage.getItem('fontSize')) || 30;
 
         // عناصر DOM
         const homeDiv = document.getElementById('home');
@@ -1022,7 +979,7 @@
                     e.stopPropagation();
                     showTafseer(a.number);
                 };
-                tafseerSpan.title = 'عرض التفسير';
+                tafseerSpan.title = 'تفسير الآية';
                 
                 wrapper.appendChild(textSpan);
                 wrapper.appendChild(numberSpan);
@@ -1034,25 +991,31 @@
             if (ayahs.length) highlightAyah();
         }
 
-        // ========== التفسير ==========
+        // ========== التفسير الصحيح ==========
         async function showTafseer(ayahNumber) {
             try {
-                tafseerText.textContent = 'جاري تحميل التفسير...';
+                tafseerText.innerHTML = '<div class="loader"><i class="fas fa-spinner fa-spin"></i> جاري تحميل التفسير...</div>';
                 tafseerModal.classList.add('show');
                 
-                // استخدام API القرآن للحصول على التفسير (مفسر السعدي)
-                const res = await fetch(`${API}/ayah/${ayahNumber}/ar.saadi`);
-                if (!res.ok) throw new Error('فشل تحميل التفسير');
+                // استخدام API الصحيح للتفسير - ar.muyassar (تفسير الميسر)
+                const res = await fetch(`${API}/ayah/${ayahNumber}/ar.muyassar`);
+                
+                if (!res.ok) {
+                    throw new Error('فشل تحميل التفسير');
+                }
+                
                 const data = await res.json();
                 
-                if (data.data && data.data.text) {
-                    tafseerText.textContent = data.data.text;
+                if (data && data.data && data.data.text) {
+                    // تنظيف النص من أي وسوم HTML
+                    const text = data.data.text.replace(/<[^>]*>/g, '');
+                    tafseerText.innerHTML = `<p style="font-size: 24px; line-height: 1.8;">${text}</p>`;
                 } else {
-                    tafseerText.textContent = 'لا يتوفر تفسير لهذه الآية';
+                    tafseerText.innerHTML = '<p style="color: #c47a5b;">عذراً، لا يتوفر تفسير لهذه الآية</p>';
                 }
             } catch (e) {
                 console.error('خطأ في التفسير:', e);
-                tafseerText.textContent = 'عذراً، حدث خطأ في تحميل التفسير';
+                tafseerText.innerHTML = '<p style="color: #c47a5b;">حدث خطأ في تحميل التفسير. يرجى المحاولة مرة أخرى.</p>';
                 showNotification('فشل تحميل التفسير', true);
             }
         }
@@ -1071,15 +1034,15 @@
         // ========== النسخ والإشعارات ==========
         function copyAyah(text, index) {
             navigator.clipboard.writeText(text).then(() => {
-                showNotification('تم نسخ الآية');
+                showNotification('✓ تم نسخ الآية');
                 playAyah(index);
-            }).catch(() => showNotification('تعذر النسخ', true));
+            }).catch(() => showNotification('✗ تعذر النسخ', true));
         }
 
         function showNotification(msg, isError = false) {
             notification.textContent = msg;
-            notification.style.backgroundColor = isError ? '#8b3a3a' : '#d4af37';
-            notification.style.color = '#0c4a3b';
+            notification.style.backgroundColor = isError ? '#8b3a3a' : '#b69b4c';
+            notification.style.color = isError ? '#f0ecd9' : '#0a3b2e';
             notification.style.display = 'block';
             setTimeout(() => notification.style.display = 'none', 2000);
         }
