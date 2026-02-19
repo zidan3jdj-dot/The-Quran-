@@ -4,204 +4,220 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>القرآن الكريم - المصحف الأخضر</title>
+    <!-- الخطوط -->
     <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+    <!-- أيقونات Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* ===== المتغيرات ===== */
-        :root {
-            --dark-green: #0a3b2e;
-            --medium-green: #1d5e45;
-            --light-green: #2a6b4e;
-            --gold: #c4a55b;
-            --light-gold: #e6d5a8;
-            --paper: #fef9e7;
-            --font-size-base: 32px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Amiri Quran', serif;
-            background: var(--dark-green);
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path d="M20 20 L30 10 L40 20 L50 5 L60 20 L70 8 L80 20 L85 15 L90 20 L82 35 L90 50 L80 60 L70 50 L60 70 L50 55 L40 70 L30 55 L20 70 L10 50 L20 35 L10 20 L20 20" fill="none" stroke="%23e6d5a8" stroke-width="1.5"/><circle cx="50" cy="30" r="2" fill="%23e6d5a8"/><circle cx="30" cy="50" r="2" fill="%23e6d5a8"/><circle cx="70" cy="50" r="2" fill="%23e6d5a8"/></svg>');
+            background: #0a3b2e;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path d="M20 20 L30 10 L40 20 L50 5 L60 20 L70 8 L80 20 L85 15 L90 20 L82 35 L90 50 L80 60 L70 50 L60 70 L50 55 L40 70 L30 55 L20 70 L10 50 L20 35 L10 20 L20 20" fill="none" stroke="%23e6d5a8" stroke-width="1"/><circle cx="50" cy="30" r="2" fill="%23e6d5a8"/><circle cx="30" cy="50" r="2" fill="%23e6d5a8"/><circle cx="70" cy="50" r="2" fill="%23e6d5a8"/></svg>');
             background-repeat: repeat;
             min-height: 100vh;
-            padding-bottom: 140px;
-            color: #f9f3d9;
+            padding-bottom: 120px;
+            color: #f0ecd9;
             position: relative;
         }
 
         body::before {
             content: "";
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(10, 59, 46, 0.85);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 59, 46, 0.88);
             z-index: -1;
         }
 
-        /* ===== الهيدر ===== */
         header {
             text-align: center;
-            padding: 30px 20px;
-            font-size: 42px;
-            color: var(--light-gold);
-            text-shadow: 0 0 15px var(--light-green), 2px 2px 0 #1d4a38;
-            background: linear-gradient(180deg, var(--medium-green), transparent);
-            border-bottom: 3px solid var(--gold);
+            padding: 25px 15px;
+            font-size: 38px;
+            color: #e0cf9b;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+            background: linear-gradient(180deg, #1d5e45, transparent);
+            border-bottom: 2px solid #b69b4c;
+        }
+
+        header i {
+            margin: 0 8px;
+            color: #e0cf9b;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 950px;
             margin: auto;
-            padding: 20px;
+            padding: 15px;
         }
 
-        /* ===== البحث ===== */
+        /* مربع البحث */
         .search-box {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(8px);
-            border: 2px solid var(--light-green);
-            border-radius: 60px;
-            padding: 5px 20px;
-            margin-bottom: 35px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(4px);
+            border: 1px solid #2a6b4e;
+            border-radius: 50px;
+            padding: 3px 15px;
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
-            box-shadow: 0 10px 25px rgba(0,20,10,0.6);
+            box-shadow: 0 5px 15px rgba(0, 20, 0, 0.3);
         }
 
         .search-box i {
-            font-size: 24px;
-            color: var(--gold);
-            margin-left: 15px;
+            font-size: 20px;
+            color: #b69b4c;
+            margin-left: 10px;
         }
 
         .search-box input {
             background: transparent;
             border: none;
             width: 100%;
-            padding: 15px 0;
-            font-size: 22px;
-            color: #f9f3d9;
+            padding: 12px 0;
+            font-size: 20px;
+            color: #f0ecd9;
             outline: none;
             font-family: 'Amiri Quran', serif;
         }
 
         .search-box input::placeholder {
-            color: #a1c9b6;
-            opacity: 0.8;
+            color: #8fa98c;
+            opacity: 0.7;
         }
 
-        /* ===== فهرس السور ===== */
+        /* عنوان القائمة */
         .list-header {
             text-align: center;
-            margin: 40px 0 25px;
+            margin: 30px 0 20px;
         }
 
         .list-header h2 {
-            font-size: 36px;
-            color: var(--light-gold);
-            background: rgba(26,78,58,0.7);
+            font-size: 32px;
+            color: #e0cf9b;
+            background: rgba(26, 68, 50, 0.6);
             display: inline-block;
-            padding: 10px 40px;
-            border-radius: 80px;
-            border: 2px solid var(--gold);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 5px 15px #1a3b2c;
+            padding: 8px 30px;
+            border-radius: 60px;
+            border: 1px solid #b69b4c;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 3px 10px #1a3326;
         }
 
+        /* قائمة السور */
         #surahList {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 10px;
         }
 
         .surah-card {
-            background: rgba(26,68,50,0.7);
-            backdrop-filter: blur(8px);
-            border: 2px solid var(--light-green);
-            color: #f3e8c2;
-            padding: 20px 25px;
-            border-radius: 40px;
+            background: rgba(26, 68, 50, 0.6);
+            backdrop-filter: blur(4px);
+            border: 1px solid #2a6b4e;
+            color: #f0e7c0;
+            padding: 15px 20px;
+            border-radius: 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            transition: 0.4s;
-            box-shadow: 0 8px 20px rgba(0,20,0,0.6);
-            border-bottom: 4px solid var(--gold);
+            transition: 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-bottom: 2px solid #b69b4c;
         }
 
         .surah-card:hover {
-            transform: translateY(-5px) scale(1.01);
-            background: rgba(36,94,70,0.9);
-            border-color: var(--light-gold);
-            box-shadow: 0 15px 35px #1a4a33;
+            transform: translateY(-3px);
+            background: rgba(36, 94, 70, 0.8);
+            border-color: #e0cf9b;
+            box-shadow: 0 8px 18px #153f2b;
         }
 
         .surah-name {
-            font-size: 28px;
-            font-weight: 600;
+            font-size: 24px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
         }
 
-        .surah-name i { color: var(--gold); font-size: 28px; }
+        .surah-name i {
+            color: #b69b4c;
+            font-size: 24px;
+        }
 
         .surah-number {
-            background: var(--light-green);
-            color: var(--light-gold);
-            min-width: 50px; height: 50px;
-            display: flex; align-items: center; justify-content: center;
+            background: #2a6b4e;
+            color: #e0cf9b;
+            min-width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: 50%;
-            font-size: 22px; font-weight: bold;
-            border: 2px solid var(--gold);
-            box-shadow: 0 0 0 2px #1d4a38;
-            padding: 0 5px;
+            font-size: 20px;
+            font-weight: 600;
+            border: 1px solid #b69b4c;
         }
 
         .surah-meta {
-            display: flex; align-items: center; gap: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .ayah-count {
-            background: #1d4a38; color: var(--light-gold);
-            padding: 5px 15px; border-radius: 30px;
-            font-size: 18px; border: 1px solid var(--gold);
+            background: #1d4a38;
+            color: #e0cf9b;
+            padding: 4px 12px;
+            border-radius: 25px;
+            font-size: 16px;
+            border: 1px solid #b69b4c;
         }
 
-        /* ===== شريط اختيار القارئ المتطور ===== */
+        /* رأس القارئ */
         .reader-header {
-            background: rgba(26,68,50,0.8);
-            backdrop-filter: blur(12px);
-            padding: 15px 25px;
-            border-radius: 80px;
-            border: 2px solid var(--gold);
+            background: rgba(26, 68, 50, 0.7);
+            backdrop-filter: blur(8px);
+            padding: 12px 20px;
+            border-radius: 60px;
+            border: 1px solid #b69b4c;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
-            margin-bottom: 30px;
-            position: relative;
+            margin-bottom: 20px;
         }
 
         .back, .share-btn {
-            background: var(--light-green);
-            border: 2px solid var(--gold);
-            padding: 12px 20px;
-            border-radius: 50px;
-            color: #f3e8c2;
+            background: #2a6b4e;
+            border: 1px solid #b69b4c;
+            padding: 10px 18px;
+            border-radius: 40px;
+            color: #f0e7c0;
             cursor: pointer;
-            font-size: 22px;
-            transition: 0.3s;
-            display: flex; align-items: center; gap: 8px;
+            font-size: 20px;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .share-btn { background: #1d4a38; }
+        .share-btn {
+            background: #1d4a38;
+        }
 
         .back:hover, .share-btn:hover {
-            background: var(--medium-green);
-            transform: translateX(-5px);
+            background: #1d5e45;
+            transform: translateX(-3px);
         }
 
         /* القارئ الحالي */
@@ -209,52 +225,53 @@
             flex: 1;
             display: flex;
             align-items: center;
-            gap: 15px;
-            background: rgba(0,0,0,0.2);
-            padding: 8px 20px;
-            border-radius: 60px;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.15);
+            padding: 6px 16px;
+            border-radius: 50px;
             cursor: pointer;
-            border: 1px solid var(--gold);
-            transition: 0.3s;
+            border: 1px solid #b69b4c;
+            transition: 0.2s;
         }
 
         .current-reciter:hover {
-            background: rgba(0,0,0,0.4);
+            background: rgba(0, 0, 0, 0.25);
         }
 
         .reciter-img {
-            width: 50px; height: 50px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--gold);
+            border: 2px solid #b69b4c;
         }
 
         .reciter-name {
-            font-size: 24px;
-            color: var(--light-gold);
+            font-size: 22px;
+            color: #e0cf9b;
         }
 
         .current-reciter i {
             margin-right: auto;
-            color: var(--gold);
-            font-size: 20px;
+            color: #b69b4c;
+            font-size: 18px;
         }
 
-        /* القائمة المنسدلة */
+        /* القائمة المنسدلة للقراء */
         .reciter-dropdown {
             position: absolute;
             top: 100%;
             right: 0;
             left: 0;
-            margin-top: 10px;
-            background: rgba(26,58,46,0.98);
-            backdrop-filter: blur(10px);
-            border: 2px solid var(--gold);
-            border-radius: 40px;
-            padding: 15px;
+            margin-top: 8px;
+            background: rgba(20, 50, 38, 0.98);
+            backdrop-filter: blur(8px);
+            border: 1px solid #b69b4c;
+            border-radius: 30px;
+            padding: 12px;
             z-index: 100;
             display: none;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
 
         .reciter-dropdown.show {
@@ -264,12 +281,12 @@
         .reciter-option {
             display: flex;
             align-items: center;
-            gap: 15px;
-            padding: 12px 20px;
-            border-radius: 60px;
-            transition: 0.3s;
+            gap: 12px;
+            padding: 10px 16px;
+            border-radius: 40px;
+            transition: 0.2s;
             cursor: pointer;
-            border-bottom: 1px solid var(--light-green);
+            border-bottom: 1px solid #2a6b4e;
         }
 
         .reciter-option:last-child {
@@ -277,232 +294,334 @@
         }
 
         .reciter-option:hover {
-            background: var(--light-green);
+            background: #2a6b4e;
         }
 
         .reciter-option img {
-            width: 45px; height: 45px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--gold);
+            border: 2px solid #b69b4c;
         }
 
         .reciter-option span {
-            font-size: 22px;
-            color: var(--light-gold);
+            font-size: 20px;
+            color: #f0e7c0;
         }
 
-        /* ===== رأس السورة ===== */
+        /* رأس السورة */
         .surah-info {
-            text-align: center;
-            color: var(--light-gold);
-            font-size: 40px;
-            margin: 10px 0 5px;
-            text-shadow: 0 0 10px #1a4a33;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
+            margin: 15px 0 10px;
+        }
+
+        .surah-name-big {
+            font-size: 36px;
+            color: #e0cf9b;
+            text-shadow: 0 2px 6px #1a3b2c;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .surah-stats {
-            font-size: 22px;
-            background: rgba(0,0,0,0.3);
-            padding: 5px 20px;
+            font-size: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 4px 16px;
             border-radius: 40px;
-            border: 1px solid var(--gold);
+            border: 1px solid #b69b4c;
         }
 
         .font-controls {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             margin-right: auto;
         }
 
         .font-controls button {
-            background: var(--light-green);
-            border: 2px solid var(--gold);
-            color: var(--light-gold);
-            width: 45px; height: 45px;
+            background: #2a6b4e;
+            border: 1px solid #b69b4c;
+            color: #e0cf9b;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            font-size: 24px;
+            font-size: 20px;
             cursor: pointer;
-            transition: 0.3s;
-            display: flex; align-items: center; justify-content: center;
+            transition: 0.2s;
         }
 
         .font-controls button:hover {
-            background: var(--medium-green);
-            transform: scale(1.1);
+            background: #1d5e45;
+            transform: scale(1.05);
         }
 
-        /* ===== المصحف ===== */
+        /* المصحف */
         .mushaf {
-            background: var(--paper);
-            padding: 50px 30px;
-            border-radius: 50px 50px 30px 30px;
-            line-height: 3;
-            font-size: var(--font-size-base);
+            background: #fbf5e0;
+            padding: 40px 25px;
+            border-radius: 40px 40px 20px 20px;
+            line-height: 2.8;
+            font-size: var(--font-size-base, 30px);
             text-align: center;
-            box-shadow: 0 0 0 8px var(--light-green), 0 0 0 15px var(--gold), 0 25px 50px rgba(0,30,10,0.8);
-            color: #1d3b2c;
-            position: relative;
-            margin-top: 25px;
-            transition: font-size 0.2s;
+            box-shadow: 0 0 0 5px #2a6b4e, 0 0 0 10px #b69b4c, 0 15px 30px rgba(0, 30, 0, 0.6);
+            color: #1e3a2b;
+            margin-top: 20px;
+            transition: font-size 0.1s;
         }
 
         .mushaf::before {
-            content: "﴿"; font-size: 70px; color: var(--light-green);
-            position: absolute; top: -25px; right: 30px; opacity: 0.5; transform: rotate(10deg);
+            content: "﴿";
+            font-size: 60px;
+            color: #2a6b4e;
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            opacity: 0.4;
+            transform: rotate(8deg);
         }
 
         .mushaf::after {
-            content: "﴾"; font-size: 70px; color: var(--light-green);
-            position: absolute; bottom: -25px; left: 30px; opacity: 0.5; transform: rotate(-10deg);
+            content: "﴾";
+            font-size: 60px;
+            color: #2a6b4e;
+            position: absolute;
+            bottom: -15px;
+            left: 20px;
+            opacity: 0.4;
+            transform: rotate(-8deg);
         }
 
         .bismillah {
-            font-size: 45px;
-            color: var(--light-green);
-            margin-bottom: 30px;
-            font-weight: bold;
-            text-shadow: 0 0 5px var(--gold);
-            border-bottom: 2px dashed var(--gold);
-            padding-bottom: 15px;
+            font-size: 42px;
+            color: #2a6b4e;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border-bottom: 1px dashed #b69b4c;
+            padding-bottom: 10px;
         }
 
         .ayah {
-            padding: 6px 12px;
-            border-radius: 25px;
-            transition: 0.3s;
+            padding: 4px 8px;
+            border-radius: 20px;
+            transition: 0.2s;
             cursor: pointer;
             display: inline-block;
-            margin: 2px 0;
+            margin: 1px 0;
             position: relative;
         }
 
         .ayah:hover {
-            background: rgba(42,107,78,0.2);
+            background: rgba(42, 107, 78, 0.15);
         }
 
         .ayah[data-ayah-number]:hover::after {
             content: attr(data-ayah-number);
             position: absolute;
-            bottom: 100%; left: 50%; transform: translateX(-50%);
-            background: #1d4a38; color: var(--light-gold);
-            font-size: 16px; padding: 4px 8px; border-radius: 20px;
-            white-space: nowrap; border: 1px solid var(--gold); margin-bottom: 5px; z-index: 10;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1d4a38;
+            color: #e0cf9b;
+            font-size: 14px;
+            padding: 4px 8px;
+            border-radius: 20px;
+            white-space: nowrap;
+            border: 1px solid #b69b4c;
+            margin-bottom: 5px;
+            z-index: 10;
         }
 
         .active {
-            background: linear-gradient(145deg, var(--gold), var(--light-green));
-            color: var(--paper);
-            box-shadow: 0 0 25px var(--gold), 0 5px 15px #1d4a38;
-            transform: scale(1.02);
-            font-weight: bold;
-            border-radius: 35px;
-            padding: 6px 20px;
+            background: linear-gradient(145deg, #b69b4c, #2a6b4e);
+            color: #fbf5e0;
+            box-shadow: 0 0 15px #b69b4c;
+            transform: scale(1.01);
+            font-weight: 600;
+            border-radius: 30px;
+            padding: 4px 16px;
         }
 
-        /* ===== المشغل ===== */
+        /* المشغل */
         .player {
-            position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%);
-            width: 92%; max-width: 750px;
-            background: rgba(10,45,35,0.98);
-            backdrop-filter: blur(15px);
-            border: 3px solid var(--gold);
-            border-radius: 100px;
-            padding: 15px 25px;
-            display: flex; align-items: center; gap: 15px;
-            box-shadow: 0 20px 45px #0a251d, 0 0 0 3px var(--light-green) inset;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 94%;
+            max-width: 720px;
+            background: rgba(10, 45, 35, 0.98);
+            backdrop-filter: blur(12px);
+            border: 1px solid #b69b4c;
+            border-radius: 80px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 30px #0a251d;
             z-index: 1000;
-            transition: 0.4s;
+            transition: 0.3s;
         }
 
         .player.hidden {
-            opacity: 0; visibility: hidden; transform: translateX(-50%) translateY(30px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-50%) translateY(20px);
         }
 
         .player button {
-            background: linear-gradient(145deg, var(--gold), var(--light-green));
-            border: none; width: 60px; height: 60px; border-radius: 50%;
-            font-size: 28px; cursor: pointer; transition: 0.3s;
-            color: #1d3b2c; box-shadow: 0 5px 0 #1a4a33, 0 10px 20px black;
-            display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(145deg, #b69b4c, #2a6b4e);
+            border: none;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #1d3b2c;
+            box-shadow: 0 4px 0 #1a4a33, 0 6px 12px black;
         }
 
         .player button:hover:not(:disabled) {
-            transform: translateY(-3px); box-shadow: 0 8px 0 #1a4a33, 0 15px 25px black;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #1a4a33, 0 10px 16px black;
         }
 
         .player button:active:not(:disabled) {
-            transform: translateY(4px); box-shadow: 0 2px 0 #1a4a33, 0 10px 20px black;
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #1a4a33, 0 8px 12px black;
         }
 
         .player button:disabled {
-            opacity: 0.4; cursor: not-allowed; box-shadow: 0 4px 0 #1a4a33;
+            opacity: 0.3;
+            box-shadow: 0 2px 0 #1a4a33;
         }
 
         .progress-area {
             flex: 1;
-            display: flex; align-items: center; gap: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .progress-bar {
-            flex: 1; height: 8px; background: #1d4a38; border-radius: 10px; overflow: hidden;
+            flex: 1;
+            height: 5px;
+            background: #1d4a38;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
         .progress-fill {
-            height: 100%; width: 0%; background: var(--gold); border-radius: 10px;
+            height: 100%;
+            width: 0%;
+            background: #b69b4c;
+            border-radius: 10px;
         }
 
         .ayah-counter {
-            color: var(--light-gold); font-size: 18px; min-width: 80px; text-align: center;
+            color: #e0cf9b;
+            font-size: 16px;
+            min-width: 70px;
+            text-align: center;
         }
 
-        /* ===== أزرار مساعدة ===== */
+        /* أزرار مساعدة */
         .go-top {
-            position: fixed; bottom: 120px; left: 20px;
-            background: var(--light-green); color: var(--light-gold);
-            width: 60px; height: 60px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 30px; cursor: pointer; border: 3px solid var(--gold);
-            box-shadow: 0 5px 15px black; transition: 0.3s;
-            opacity: 0; visibility: hidden; z-index: 999;
+            position: fixed;
+            bottom: 100px;
+            left: 20px;
+            background: #2a6b4e;
+            color: #e0cf9b;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            cursor: pointer;
+            border: 2px solid #b69b4c;
+            box-shadow: 0 4px 12px black;
+            transition: 0.2s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
         }
 
-        .go-top.show { opacity: 1; visibility: visible; }
-        .go-top:hover { background: var(--medium-green); transform: scale(1.1); }
+        .go-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .go-top:hover {
+            background: #1d5e45;
+            transform: scale(1.07);
+        }
 
         .notification {
-            position: fixed; bottom: 120px; left: 50%; transform: translateX(-50%);
-            background: #1d4a38; color: var(--light-gold);
-            padding: 15px 30px; border-radius: 60px; border: 3px solid var(--gold);
-            font-size: 20px; z-index: 2000; display: none; backdrop-filter: blur(5px);
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1d4a38;
+            color: #e0cf9b;
+            padding: 12px 25px;
+            border-radius: 50px;
+            border: 2px solid #b69b4c;
+            font-size: 18px;
+            z-index: 2000;
+            display: none;
+            backdrop-filter: blur(5px);
         }
 
         .loader, .error {
-            text-align: center; padding: 40px; font-size: 28px;
-            background: rgba(0,0,0,0.3); border-radius: 50px; margin: 30px 0;
+            text-align: center;
+            padding: 30px;
+            font-size: 24px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 40px;
+            margin: 20px 0;
         }
-        .loader { color: var(--light-gold); }
-        .loader i { animation: spin 2s infinite linear; margin-left: 10px; }
-        .error { color: #ffaa7a; border: 3px solid #c47a5b; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .loader {
+            color: #e0cf9b;
+        }
+
+        .loader i {
+            animation: spin 1.5s infinite linear;
+            margin-left: 8px;
+        }
+
+        .error {
+            color: #ffaa7a;
+            border: 1px solid #c47a5b;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 
         .islamic-pattern {
-            height: 15px; background: repeating-linear-gradient(45deg, var(--gold) 0px, var(--gold) 10px, var(--light-green) 10px, var(--light-green) 20px);
-            border-radius: 10px; margin: 20px 0;
+            height: 10px;
+            background: repeating-linear-gradient(45deg, #b69b4c 0px, #b69b4c 6px, #2a6b4e 6px, #2a6b4e 12px);
+            border-radius: 8px;
+            margin: 15px 0;
         }
 
-        @media (max-width: 700px) {
-            header { font-size: 34px; }
-            .surah-name { font-size: 22px; }
-            .surah-number { min-width: 40px; height: 40px; font-size: 18px; }
-            .mushaf { font-size: 26px; padding: 30px 15px; }
-            .player button { width: 50px; height: 50px; font-size: 24px; }
-            .reciter-name { font-size: 20px; }
+        /* تحسينات الجوال */
+        @media (max-width: 600px) {
+            header { font-size: 32px; }
+            .surah-name { font-size: 20px; }
+            .surah-number { min-width: 36px; height: 36px; font-size: 16px; }
+            .mushaf { font-size: 24px; padding: 30px 12px; }
+            .player button { width: 45px; height: 45px; font-size: 20px; }
+            .reciter-name { font-size: 18px; }
         }
     </style>
 </head>
@@ -527,7 +646,7 @@
                 
                 <!-- القارئ الحالي مع القائمة المنسدلة -->
                 <div class="current-reciter" id="currentReciterBtn" onclick="toggleReciterDropdown()">
-                    <img id="currentReciterImg" src="1.jpeg" alt="reciter" class="reciter-img" onerror="this.src='https://via.placeholder.com/50?text=?'">
+                    <img id="currentReciterImg" src="1.jpeg" alt="reciter" class="reciter-img" onerror="this.src='https://via.placeholder.com/42?text=?'">
                     <span id="currentReciterName" class="reciter-name">مشاري العفاسي</span>
                     <i class="fas fa-chevron-down"></i>
                 </div>
@@ -535,19 +654,19 @@
                 <!-- قائمة القراء المخفية -->
                 <div id="reciterDropdown" class="reciter-dropdown">
                     <div class="reciter-option" data-value="ar.alafasy" data-img="1.jpeg" onclick="selectReciter('ar.alafasy', 'مشاري العفاسي', '1.jpeg')">
-                        <img src="1.jpeg" onerror="this.src='https://via.placeholder.com/45?text=?'">
+                        <img src="1.jpeg" onerror="this.src='https://via.placeholder.com/40?text=?'">
                         <span>مشاري العفاسي</span>
                     </div>
                     <div class="reciter-option" data-value="ar.abdulbasitmurattal" data-img="2.jpeg" onclick="selectReciter('ar.abdulbasitmurattal', 'عبد الباسط عبد الصمد', '2.jpeg')">
-                        <img src="2.jpeg" onerror="this.src='https://via.placeholder.com/45?text=?'">
+                        <img src="2.jpeg" onerror="this.src='https://via.placeholder.com/40?text=?'">
                         <span>عبد الباسط عبد الصمد</span>
                     </div>
                     <div class="reciter-option" data-value="ar.mahermuaiqly" data-img="3.jpeg" onclick="selectReciter('ar.mahermuaiqly', 'ماهر المعيقلي', '3.jpeg')">
-                        <img src="3.jpeg" onerror="this.src='https://via.placeholder.com/45?text=?'">
+                        <img src="3.jpeg" onerror="this.src='https://via.placeholder.com/40?text=?'">
                         <span>ماهر المعيقلي</span>
                     </div>
                     <div class="reciter-option" data-value="ar.minshawi" data-img="4.jpeg" onclick="selectReciter('ar.minshawi', 'محمد صديق المنشاوي', '4.jpeg')">
-                        <img src="4.jpeg" onerror="this.src='https://via.placeholder.com/45?text=?'">
+                        <img src="4.jpeg" onerror="this.src='https://via.placeholder.com/40?text=?'">
                         <span>محمد صديق المنشاوي</span>
                     </div>
                 </div>
@@ -556,8 +675,8 @@
             </div>
 
             <!-- رأس السورة مع أدوات التحكم -->
-            <div class="surah-info" id="surahName">
-                <span><i class="fas fa-quran"></i> سورة الفاتحة</span>
+            <div class="surah-info">
+                <span class="surah-name-big" id="surahName"><i class="fas fa-quran"></i> سورة الفاتحة</span>
                 <span class="surah-stats" id="surahStats">7 آيات</span>
                 <div class="font-controls">
                     <button onclick="changeFontSize(2)"><i class="fas fa-plus"></i></button>
@@ -573,13 +692,13 @@
         </div>
     </div>
 
-    <!-- مشغل الصوت المتطور -->
+    <!-- مشغل الصوت -->
     <div class="player" id="player">
         <button onclick="prevAyah()" id="prevBtn" title="الآية السابقة"><i class="fas fa-step-backward"></i></button>
         <button onclick="togglePlay()" id="playPauseBtn" title="تشغيل/إيقاف"><i class="fas fa-play"></i></button>
         <button onclick="nextAyah()" id="nextBtn" title="الآية التالية"><i class="fas fa-step-forward"></i></button>
         <div class="progress-area">
-            <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
             <span class="ayah-counter" id="ayahCounter">0/0</span>
         </div>
         <audio id="audio" preload="auto"></audio>
@@ -592,13 +711,13 @@
     <div class="notification" id="notification"></div>
 
     <script>
-        // ========== الثوابت والمتغيرات ==========
+        // ========== الإعدادات ==========
         const API = "https://api.alquran.cloud/v1";
         let allSurahs = [], ayahs = [], currentIndex = 0, currentSurahNumber = null, isPlaying = false;
         let currentReciter = localStorage.getItem('reciter') || 'ar.alafasy';
         let currentReciterName = localStorage.getItem('reciterName') || 'مشاري العفاسي';
         let currentReciterImg = localStorage.getItem('reciterImg') || '1.jpeg';
-        let fontSize = parseInt(localStorage.getItem('fontSize')) || 32;
+        let fontSize = parseInt(localStorage.getItem('fontSize')) || 30;
 
         // عناصر DOM
         const homeDiv = document.getElementById('home');
@@ -607,7 +726,7 @@
         const ayahContainer = document.getElementById('ayahContainer');
         const audio = document.getElementById('audio');
         const playerDiv = document.getElementById('player');
-        const surahNameDiv = document.getElementById('surahName');
+        const surahNameSpan = document.getElementById('surahName');
         const surahStats = document.getElementById('surahStats');
         const playPauseBtn = document.getElementById('playPauseBtn');
         const prevBtn = document.getElementById('prevBtn');
@@ -617,8 +736,6 @@
         const notification = document.getElementById('notification');
         const ayahCounter = document.getElementById('ayahCounter');
         const progressFill = document.getElementById('progressFill');
-
-        // عناصر القارئ
         const currentReciterImgEl = document.getElementById('currentReciterImg');
         const currentReciterNameEl = document.getElementById('currentReciterName');
         const reciterDropdown = document.getElementById('reciterDropdown');
@@ -630,7 +747,7 @@
         // ========== تحميل السور ==========
         async function loadSurahs() {
             try {
-                surahListDiv.innerHTML = '<div class="loader"><i class="fas fa-spinner fa-spin"></i> جاري تحميل القائمة...</div>';
+                surahListDiv.innerHTML = '<div class="loader"><i class="fas fa-spinner fa-spin"></i> جاري التحميل...</div>';
                 const res = await fetch(`${API}/surah`);
                 if (!res.ok) throw new Error('فشل الاتصال');
                 const data = await res.json();
@@ -670,7 +787,7 @@
                 localStorage.setItem('lastSurah', JSON.stringify({ number, name }));
                 homeDiv.style.display = 'none';
                 readerDiv.style.display = 'block';
-                surahNameDiv.querySelector('span:first-child').innerHTML = `<i class="fas fa-quran"></i> سورة ${name}`;
+                surahNameSpan.innerHTML = `<i class="fas fa-quran"></i> سورة ${name}`;
                 ayahContainer.innerHTML = '<div class="loader"><i class="fas fa-spinner fa-spin"></i> جاري التحميل...</div>';
                 playerDiv.classList.add('hidden');
 
@@ -681,7 +798,6 @@
                 currentSurahNumber = number;
                 currentIndex = 0;
 
-                // عرض عدد الآيات
                 surahStats.textContent = `${ayahs.length} آيات`;
 
                 renderAyahs();
@@ -749,10 +865,9 @@
                 playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
                 isPlaying = false;
             }
-            audio.src = ''; // إعادة تعيين المصدر
+            audio.src = '';
         };
 
-        // إغلاق القائمة عند النقر خارجها
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.current-reciter') && !e.target.closest('.reciter-dropdown')) {
                 reciterDropdown.classList.remove('show');
@@ -846,9 +961,6 @@
             playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
             isPlaying = false;
         });
-        audio.addEventListener('timeupdate', () => {
-            // يمكن إضافة تحديث شريط التقدم هنا
-        });
 
         // ========== العودة للرئيسية ==========
         window.goHome = function() {
@@ -865,7 +977,7 @@
 
         // ========== مشاركة السورة ==========
         window.shareSurah = function() {
-            const name = surahNameDiv.querySelector('span:first-child').innerText.replace('سورة', '').trim();
+            const name = surahNameSpan.innerText.replace('سورة', '').trim();
             if (navigator.share) {
                 navigator.share({ title: `سورة ${name}`, text: `أقرأ سورة ${name} من القرآن الكريم`, url: window.location.href });
             } else {
@@ -876,11 +988,10 @@
 
         // ========== تغيير حجم الخط ==========
         window.changeFontSize = function(delta) {
-            fontSize = Math.min(50, Math.max(20, fontSize + delta));
+            fontSize = Math.min(48, Math.max(18, fontSize + delta));
             localStorage.setItem('fontSize', fontSize);
             document.documentElement.style.setProperty('--font-size-base', fontSize + 'px');
         };
-        // تطبيق الحجم المحفوظ
         document.documentElement.style.setProperty('--font-size-base', fontSize + 'px');
 
         // ========== البحث مع debounce ==========
