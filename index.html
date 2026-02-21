@@ -990,31 +990,27 @@
         let currentReciterName = localStorage.getItem('reciterName') || 'مشاري العفاسي';
         let fontSize = parseInt(localStorage.getItem('fontSize')) || 26;
 
-        // ✅ قائمة القراء (بأسماء API الصحيحة ومسارات الصور)
+        // ✅ قائمة القراء الأربعة فقط (معرفات API الصحيحة)
         const reciters = [
             { 
                 id: 'ar.alafasy', 
                 name: 'مشاري العفاسي', 
-                img: '1.jpeg',
-                apiName: 'مشاري العفاسي'
+                img: '1.jpeg'
             },
             { 
                 id: 'ar.abdulbasitmurattal', 
                 name: 'عبد الباسط عبد الصمد', 
-                img: '2.jpeg',
-                apiName: 'عبد الباسط'
+                img: '2.jpeg'
             },
             { 
                 id: 'ar.mahermuaiqly', 
                 name: 'ماهر المعيقلي', 
-                img: '3.jpeg',
-                apiName: 'ماهر المعيقلي'
+                img: '3.jpeg'
             },
             { 
                 id: 'ar.minshawi', 
                 name: 'محمد المنشاوي', 
-                img: '4.jpeg',
-                apiName: 'المنشاوي'
+                img: '4.jpeg'
             }
         ];
 
@@ -1374,7 +1370,7 @@
             setTimeout(() => notification.style.display = 'none', 1500);
         }
 
-        // ========== مشغل الصوت (معدل ليدعم جميع القراء) ==========
+        // ========== مشغل الصوت (معدل ليدعم جميع القراء الأربعة) ==========
         async function playAyah(index) {
             if (index < 0 || index >= ayahs.length) return;
             currentIndex = index;
@@ -1388,7 +1384,7 @@
             try {
                 playPauseBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
                 
-                // محاولة تشغيل الصوت مع معالجة الأخطاء
+                // محاولة تشغيل الصوت
                 const ayahNumber = ayahs[index].number;
                 const url = `${API}/ayah/${ayahNumber}/${currentReciter}`;
                 
