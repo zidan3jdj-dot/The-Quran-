@@ -980,9 +980,6 @@
     <div class="notification" id="notification"></div>
 
     <script>
-        // ========== إعدادات OneSignal ==========
-        const ONESIGNAL_APP_ID = '10f309ef-dc80-4309-a615-8b91dd875aae';
-        
         // ========== الإعدادات ==========
         const API = "https://api.alquran.cloud/v1";
         let allSurahs = [], ayahs = [], currentIndex = 0, currentSurahNumber = null, isPlaying = false;
@@ -990,10 +987,10 @@
         let currentReciterName = localStorage.getItem('reciterName') || 'مشاري العفاسي';
         let fontSize = parseInt(localStorage.getItem('fontSize')) || 26;
 
-        // قائمة القراء (الأربعة)
+        // قائمة القراء
         const reciters = [
             { id: 'ar.alafasy', name: 'مشاري العفاسي', img: '1.jpeg' },
-            { id: 'ar.abdulbasitmurattal', name: 'عبد الباسط عبد الصمد', img: '2.jpeg' },
+            { id: 'ar.abdulbasitmurattal', name: 'عبد الباسط', img: '2.jpeg' },
             { id: 'ar.mahermuaiqly', name: 'ماهر المعيقلي', img: '3.jpeg' },
             { id: 'ar.minshawi', name: 'محمد المنشاوي', img: '4.jpeg' }
         ];
@@ -1025,61 +1022,6 @@
         const tafseerModal = document.getElementById('tafseerModal');
         const tafseerText = document.getElementById('tafseerText');
 
-        // ========== تهيئة OneSignal (تلقائي بدون تدخل المستخدم) ==========
-        function initOneSignal() {
-            if (window.median && median.onesignal) {
-                // تسجيل الدخول تلقائياً
-                median.onesignal.login();
-                
-                median.onesignal.onesignalInfo().then(function(info) {
-                    console.log('✅ OneSignal نشط:', info);
-                }).catch(function(err) {
-                    console.log('⚠️ OneSignal:', err);
-                });
-            } else {
-                console.log('ℹ️ OneSignal غير متوفر (وضع التطوير)');
-            }
-        }
-
-        // ========== حفظ آخر قراءة ==========
-        const LAST_READ_KEY = 'lastRead';
-
-        function saveLastRead(surahNumber, ayahIndex, surahName) {
-            const lastRead = {
-                surahNumber,
-                ayahIndex,
-                surahName,
-                timestamp: new Date().toISOString()
-            };
-            localStorage.setItem(LAST_READ_KEY, JSON.stringify(lastRead));
-        }
-
-        function loadLastRead() {
-            const saved = localStorage.getItem(LAST_READ_KEY);
-            if (saved) {
-                try {
-                    const lastRead = JSON.parse(saved);
-                    setTimeout(() => {
-                        if (confirm(`📖 هل تريد متابعة القراءة من ${lastRead.surahName}؟`)) {
-                            openSurah(
-                                lastRead.surahNumber,
-                                lastRead.surahName,
-                                'Meccan',
-                                0
-                            );
-                            setTimeout(() => {
-                                if (lastRead.ayahIndex > 0) {
-                                    playAyah(lastRead.ayahIndex);
-                                }
-                            }, 1500);
-                        }
-                    }, 2000);
-                } catch (e) {
-                    console.log('لا توجد قراءات سابقة');
-                }
-            }
-        }
-
         // ========== التبويبات ==========
         window.switchTab = function(tab) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -1109,15 +1051,15 @@
                 div.className = `reciter-item ${reciter.id === currentReciter ? 'active' : ''}`;
                 div.setAttribute('data-id', reciter.id);
                 div.innerHTML = `
-                    <img src="${reciter.img}" onerror="this.src='https://via.placeholder.com/50x50/0a3328/d4af37?text=${reciter.name.charAt(0)}'">
+                    <img src="${reciter.img}" onerror="this.src='https://via.placeholder.com/50x50/0a3328/d4af37?text=📖'">
                     <span>${reciter.name}</span>
                 `;
-                div.onclick = () => selectReciter(reciter.id, reciter.name);
+                div.onclick = () => selectReciter(reciter.id, reciter.name, reciter.img);
                 recitersContainer.appendChild(div);
             });
         }
 
-        function selectReciter(id, name) {
+        function selectReciter(id, name, img) {
             currentReciter = id;
             currentReciterName = name;
             localStorage.setItem('reciter', id);
@@ -1258,9 +1200,6 @@
                 currentSurahNumber = number;
                 currentIndex = 0;
 
-                // حفظ آخر قراءة
-                saveLastRead(number, 0, name);
-
                 renderAyahs();
                 playerDiv.classList.remove('hidden');
                 updateButtonsState();
@@ -1360,11 +1299,6 @@
             if (index < 0 || index >= ayahs.length) return;
             currentIndex = index;
             highlightAyah();
-            
-            // حفظ آخر آية
-            if (currentSurahNumber) {
-                saveLastRead(currentSurahNumber, index, surahNameSpan.innerText.replace('سورة', '').trim());
-            }
             
             try {
                 playPauseBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
@@ -1484,19 +1418,9 @@
         });
 
         // ========== بدء التطبيق ==========
-        function initApp() {
-            displayReciters();
-            loadSurahs();
-            loadJuzList();
-            
-            // تهيئة OneSignal بعد تحميل الصفحة
-            setTimeout(initOneSignal, 1500);
-            
-            // تحميل آخر قراءة بعد شوية
-            setTimeout(loadLastRead, 2000);
-        }
-
-        initApp();
+        displayReciters();
+        loadSurahs();
+        loadJuzList();
     </script>
 </body>
 </html>
