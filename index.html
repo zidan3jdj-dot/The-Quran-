@@ -58,8 +58,6 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
@@ -92,87 +90,6 @@
             font-size: 22px;
             font-weight: 900;
             box-shadow: 0 5px 0 #7a5c1a;
-        }
-
-        /* ===== زر الإشعارات ===== */
-        .notification-btn {
-            background: #1a5e45;
-            border: 2px solid #d4af37;
-            color: #d4af37;
-            padding: 8px 15px;
-            border-radius: 40px;
-            cursor: pointer;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.2s;
-        }
-
-        .notification-btn:hover {
-            background: #d4af37;
-            color: #0a3328;
-        }
-
-        .notification-btn.active {
-            background: #d4af37;
-            color: #0a3328;
-        }
-
-        /* ===== المسبحة ===== */
-        .tasbeeh-container {
-            background: rgba(10, 51, 40, 0.8);
-            backdrop-filter: blur(10px);
-            border: 2px solid #d4af37;
-            border-radius: 60px;
-            padding: 15px 25px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .tasbeeh-counter {
-            font-size: 48px;
-            font-weight: 900;
-            color: #d4af37;
-            background: rgba(0,0,0,0.2);
-            padding: 10px 30px;
-            border-radius: 50px;
-            border: 1px solid #d4af37;
-        }
-
-        .tasbeeh-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
-        .tasbeeh-btn {
-            background: #1a5e45;
-            border: 2px solid #d4af37;
-            color: #d4af37;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 24px;
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .tasbeeh-btn:hover {
-            background: #d4af37;
-            color: #0a3328;
-            transform: scale(1.1);
-        }
-
-        .tasbeeh-text {
-            font-size: 20px;
-            color: #e6d5a8;
         }
 
         /* ===== شريط التبويبات ===== */
@@ -921,7 +838,6 @@
             .surah-name { font-size: 20px; }
             .juz-card { padding: 15px 5px; }
             .juz-number { font-size: 28px; }
-            .tasbeeh-counter { font-size: 36px; }
         }
     </style>
 </head>
@@ -940,29 +856,6 @@
             <div class="quran-logo">
                 <i class="fas fa-quran"></i>
                 <span>القرآن</span>
-            </div>
-        </div>
-
-        <!-- زر تفعيل الإشعارات -->
-        <div class="main-header" style="margin-top: -10px; padding: 10px 20px;">
-            <button class="notification-btn" id="enableNotificationsBtn">
-                <i class="fas fa-bell"></i>
-                <span id="notificationStatus">تفعيل الإشعارات اليومية</span>
-            </button>
-            <span style="color: #e6d5a8; font-size: 14px;">
-                <i class="fas fa-clock"></i> أذكار الصباح والمساء
-            </span>
-        </div>
-
-        <!-- المسبحة الإلكترونية -->
-        <div class="tasbeeh-container">
-            <div>
-                <span class="tasbeeh-text">مسبحة التسبيح</span>
-                <div class="tasbeeh-counter" id="tasbeehCount">0</div>
-            </div>
-            <div class="tasbeeh-buttons">
-                <button class="tasbeeh-btn" onclick="incrementTasbeeh()"><i class="fas fa-plus"></i></button>
-                <button class="tasbeeh-btn" onclick="resetTasbeeh()"><i class="fas fa-redo-alt"></i></button>
             </div>
         </div>
 
@@ -1096,15 +989,33 @@
         let currentReciter = localStorage.getItem('reciter') || 'ar.alafasy';
         let currentReciterName = localStorage.getItem('reciterName') || 'مشاري العفاسي';
         let fontSize = parseInt(localStorage.getItem('fontSize')) || 26;
-        let notificationEnabled = localStorage.getItem('notifications') === 'true';
-        let tasbeehCount = parseInt(localStorage.getItem('tasbeeh')) || 0;
 
-        // قائمة القراء
+        // ✅ قائمة القراء (بأسماء API الصحيحة ومسارات الصور)
         const reciters = [
-            { id: 'ar.alafasy', name: 'مشاري العفاسي', img: 'https://via.placeholder.com/50x50/0a3328/d4af37?text=م' },
-            { id: 'ar.abdulbasitmurattal', name: 'عبد الباسط', img: 'https://via.placeholder.com/50x50/0a3328/d4af37?text=ع' },
-            { id: 'ar.mahermuaiqly', name: 'ماهر المعيقلي', img: 'https://via.placeholder.com/50x50/0a3328/d4af37?text=م' },
-            { id: 'ar.minshawi', name: 'محمد المنشاوي', img: 'https://via.placeholder.com/50x50/0a3328/d4af37?text=م' }
+            { 
+                id: 'ar.alafasy', 
+                name: 'مشاري العفاسي', 
+                img: '1.jpeg',
+                apiName: 'مشاري العفاسي'
+            },
+            { 
+                id: 'ar.abdulbasitmurattal', 
+                name: 'عبد الباسط عبد الصمد', 
+                img: '2.jpeg',
+                apiName: 'عبد الباسط'
+            },
+            { 
+                id: 'ar.mahermuaiqly', 
+                name: 'ماهر المعيقلي', 
+                img: '3.jpeg',
+                apiName: 'ماهر المعيقلي'
+            },
+            { 
+                id: 'ar.minshawi', 
+                name: 'محمد المنشاوي', 
+                img: '4.jpeg',
+                apiName: 'المنشاوي'
+            }
         ];
 
         // عناصر DOM
@@ -1133,75 +1044,21 @@
         const recitersContainer = document.getElementById('recitersContainer');
         const tafseerModal = document.getElementById('tafseerModal');
         const tafseerText = document.getElementById('tafseerText');
-        const enableNotificationsBtn = document.getElementById('enableNotificationsBtn');
-        const notificationStatus = document.getElementById('notificationStatus');
-        const tasbeehCountSpan = document.getElementById('tasbeehCount');
 
-        // ========== تهيئة OneSignal ==========
+        // ========== تهيئة OneSignal (تلقائي بدون تدخل المستخدم) ==========
         function initOneSignal() {
             if (window.median && median.onesignal) {
+                // تسجيل الدخول تلقائياً
                 median.onesignal.login();
                 
                 median.onesignal.onesignalInfo().then(function(info) {
-                    console.log('OneSignal Info:', info);
-                    if (info.oneSignalSubscribed) {
-                        notificationEnabled = true;
-                        updateNotificationButton();
-                    }
+                    console.log('✅ OneSignal نشط:', info);
+                }).catch(function(err) {
+                    console.log('⚠️ OneSignal:', err);
                 });
             } else {
-                console.log('⚠️ OneSignal غير متوفر (وضع التطوير)');
+                console.log('ℹ️ OneSignal غير متوفر (وضع التطوير)');
             }
-        }
-
-        // ========== تفعيل/إلغاء الإشعارات ==========
-        function toggleNotifications() {
-            if (window.median && median.onesignal) {
-                if (!notificationEnabled) {
-                    median.onesignal.login();
-                    showNotification('✅ تم تفعيل الإشعارات اليومية');
-                    localStorage.setItem('notifications', 'true');
-                } else {
-                    median.onesignal.logout();
-                    showNotification('❌ تم إلغاء الإشعارات');
-                    localStorage.setItem('notifications', 'false');
-                }
-                notificationEnabled = !notificationEnabled;
-                updateNotificationButton();
-            } else {
-                showNotification('الإشعارات متاحة فقط في التطبيق');
-            }
-        }
-
-        function updateNotificationButton() {
-            if (notificationEnabled) {
-                enableNotificationsBtn.classList.add('active');
-                notificationStatus.textContent = 'الإشعارات مفعلة ✅';
-            } else {
-                enableNotificationsBtn.classList.remove('active');
-                notificationStatus.textContent = 'تفعيل الإشعارات 🔔';
-            }
-        }
-
-        // ========== المسبحة الإلكترونية ==========
-        function incrementTasbeeh() {
-            tasbeehCount++;
-            if (tasbeehCount >= 33) {
-                tasbeehCount = 0;
-                showNotification('🌸 سبحان الله وبحمده');
-            }
-            updateTasbeeh();
-        }
-
-        function resetTasbeeh() {
-            tasbeehCount = 0;
-            updateTasbeeh();
-            showNotification('تم تصفير المسبحة');
-        }
-
-        function updateTasbeeh() {
-            tasbeehCountSpan.textContent = tasbeehCount;
-            localStorage.setItem('tasbeeh', tasbeehCount);
         }
 
         // ========== حفظ آخر قراءة ==========
@@ -1264,7 +1121,7 @@
             }
         };
 
-        // ========== عرض القراء ==========
+        // ========== عرض القراء (مع الصور المحلية) ==========
         function displayReciters() {
             recitersContainer.innerHTML = '';
             reciters.forEach(reciter => {
@@ -1272,7 +1129,7 @@
                 div.className = `reciter-item ${reciter.id === currentReciter ? 'active' : ''}`;
                 div.setAttribute('data-id', reciter.id);
                 div.innerHTML = `
-                    <img src="${reciter.img}">
+                    <img src="${reciter.img}" onerror="this.src='https://via.placeholder.com/50x50/0a3328/d4af37?text=${reciter.name.charAt(0)}'">
                     <span>${reciter.name}</span>
                 `;
                 div.onclick = () => selectReciter(reciter.id, reciter.name);
@@ -1506,7 +1363,7 @@
         // ========== النسخ والإشعارات ==========
         function copyAyah(text, index) {
             navigator.clipboard.writeText(text).then(() => {
-                showNotification('تم نسخ الآية');
+                showNotification('✅ تم نسخ الآية');
                 playAyah(index);
             });
         }
@@ -1517,7 +1374,7 @@
             setTimeout(() => notification.style.display = 'none', 1500);
         }
 
-        // ========== مشغل الصوت ==========
+        // ========== مشغل الصوت (معدل ليدعم جميع القراء) ==========
         async function playAyah(index) {
             if (index < 0 || index >= ayahs.length) return;
             currentIndex = index;
@@ -1530,23 +1387,36 @@
             
             try {
                 playPauseBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
-                const res = await fetch(`${API}/ayah/${ayahs[index].number}/${currentReciter}`);
-                const data = await res.json();
-                audio.src = data.data.audio;
-                await audio.play();
-                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                isPlaying = true;
                 
-                audio.onended = () => {
-                    if (currentIndex < ayahs.length - 1) {
-                        playAyah(currentIndex + 1);
-                    } else {
-                        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-                        isPlaying = false;
-                    }
-                };
+                // محاولة تشغيل الصوت مع معالجة الأخطاء
+                const ayahNumber = ayahs[index].number;
+                const url = `${API}/ayah/${ayahNumber}/${currentReciter}`;
+                
+                console.log('محاولة تشغيل:', url);
+                
+                const res = await fetch(url);
+                const data = await res.json();
+                
+                if (data && data.data && data.data.audio) {
+                    audio.src = data.data.audio;
+                    await audio.play();
+                    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    isPlaying = true;
+                    
+                    audio.onended = () => {
+                        if (currentIndex < ayahs.length - 1) {
+                            playAyah(currentIndex + 1);
+                        } else {
+                            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+                            isPlaying = false;
+                        }
+                    };
+                } else {
+                    throw new Error('لا يوجد صوت');
+                }
             } catch (e) {
-                showNotification('تعذر تشغيل الصوت');
+                console.error('خطأ في التشغيل:', e);
+                showNotification('❌ تعذر تشغيل الصوت لهذا القارئ');
                 playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
                 isPlaying = false;
             }
@@ -1614,7 +1484,7 @@
         window.shareSurah = function() {
             const name = surahNameSpan.innerText.replace('سورة', '').trim();
             navigator.clipboard.writeText(window.location.href);
-            showNotification('تم نسخ الرابط');
+            showNotification('✅ تم نسخ الرابط');
         };
 
         // ========== تغيير حجم الخط ==========
@@ -1645,16 +1515,11 @@
             goTopBtn.classList.toggle('show', window.scrollY > 200);
         });
 
-        // ========== أحداث الأزرار ==========
-        enableNotificationsBtn.onclick = toggleNotifications;
-        
         // ========== بدء التطبيق ==========
         function initApp() {
             displayReciters();
             loadSurahs();
             loadJuzList();
-            updateTasbeeh();
-            updateNotificationButton();
             
             // تهيئة OneSignal بعد تحميل الصفحة
             setTimeout(initOneSignal, 1500);
