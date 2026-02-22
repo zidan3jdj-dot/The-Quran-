@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>القرآن الكريم - المصحف الشريف</title>
     <!-- الخطوط -->
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700;900&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700;900&family=Scheherazade+New:wght@400;700&family=Lateef:wght@400;700&display=swap" rel="stylesheet">
     <!-- أيقونات Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* (الأنماط كما هي، لم تتغير) */
         * {
             margin: 0;
             padding: 0;
@@ -17,7 +16,7 @@
         }
 
         body {
-            font-family: 'Amiri', 'Scheherazade New', serif;
+            font-family: 'Amiri', 'Scheherazade New', 'Lateef', serif;
             background: linear-gradient(145deg, #0a3328 0%, #1a5e45 100%);
             min-height: 100vh;
             color: #f5e6d3;
@@ -42,7 +41,7 @@
         .container {
             position: relative;
             z-index: 2;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 15px 12px 90px;
         }
@@ -535,7 +534,7 @@
             background: #faf3e0;
             padding: 30px 25px;
             border-radius: 50px 50px 30px 30px;
-            line-height: 2.6;
+            line-height: 2.8;
             font-size: var(--font-size-base, 26px);
             text-align: right;
             box-shadow: 0 0 0 4px #1a5e45, 0 0 0 8px #d4af37, 0 15px 30px rgba(0,0,0,0.5);
@@ -555,6 +554,7 @@
 
         .ayah-wrapper {
             display: inline;
+            margin-left: 5px;
         }
 
         .ayah-text {
@@ -563,6 +563,8 @@
             padding: 2px 6px;
             border-radius: 10px;
             transition: 0.2s;
+            font-family: 'Lateef', 'Amiri', serif;
+            line-height: 2.8;
         }
 
         .ayah-text:hover {
@@ -575,11 +577,11 @@
             justify-content: center;
             background-color: #d4af37;
             color: #0a3328;
-            width: 28px;
-            height: 28px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             font-size: 14px;
-            margin: 0 4px 0 10px;
+            margin: 0 4px 0 8px;
             border: 1px solid #1a5e45;
             font-weight: 700;
             vertical-align: middle;
@@ -592,11 +594,11 @@
             background: transparent;
             border: 1px solid #d4af37;
             color: #1a5e45;
-            width: 24px;
-            height: 24px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
-            font-size: 11px;
-            margin: 0 3px;
+            font-size: 12px;
+            margin: 0 2px;
             cursor: pointer;
             transition: 0.2s;
             vertical-align: middle;
@@ -689,15 +691,15 @@
             left: 50%;
             transform: translateX(-50%);
             width: 96%;
-            max-width: 750px;
+            max-width: 800px;
             background: rgba(10, 51, 40, 0.98);
             backdrop-filter: blur(10px);
             border: 2px solid #d4af37;
             border-radius: 70px;
-            padding: 12px 20px;
+            padding: 12px 25px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.7);
             z-index: 2000;
             transition: 0.3s;
@@ -712,8 +714,8 @@
         .player-btn {
             background: linear-gradient(145deg, #d4af37, #1a5e45);
             border: none;
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             font-size: 22px;
             cursor: pointer;
@@ -730,6 +732,7 @@
         .player-btn:disabled {
             opacity: 0.3;
             box-shadow: 0 2px 0 #0a3328;
+            cursor: not-allowed;
         }
 
         .progress-container {
@@ -741,22 +744,24 @@
 
         .progress-bar {
             flex: 1;
-            height: 5px;
+            height: 6px;
             background: #1a5e45;
-            border-radius: 5px;
+            border-radius: 6px;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .progress-fill {
             height: 100%;
             width: 0%;
             background: #d4af37;
+            transition: width 0.1s linear;
         }
 
         .progress-text {
             color: #e6d5a8;
-            font-size: 15px;
-            min-width: 75px;
+            font-size: 16px;
+            min-width: 80px;
             text-align: center;
         }
 
@@ -829,6 +834,40 @@
             margin: 20px 0;
         }
 
+        .error {
+            text-align: center;
+            padding: 40px;
+            font-size: 22px;
+            color: #ff6b6b;
+        }
+
+        /* ===== قائمة القراءة ===== */
+        .reading-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .reading-controls button {
+            background: #1a5e45;
+            border: 1px solid #d4af37;
+            color: #f5e6d3;
+            padding: 10px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .reading-controls button:hover {
+            background: #d4af37;
+            color: #0a3328;
+        }
+
         /* ===== تحسينات للأجهزة الصغيرة ===== */
         @media (max-width: 600px) {
             .shahada { display: none; }
@@ -838,6 +877,15 @@
             .surah-name { font-size: 20px; }
             .juz-card { padding: 15px 5px; }
             .juz-number { font-size: 28px; }
+            .player {
+                padding: 8px 15px;
+                gap: 8px;
+            }
+            .player-btn {
+                width: 44px;
+                height: 44px;
+                font-size: 18px;
+            }
         }
     </style>
 </head>
@@ -869,6 +917,9 @@
                 <button class="tab-btn" onclick="switchTab('juz')">
                     <i class="fas fa-layer-group"></i> الأجزاء
                 </button>
+                <button class="tab-btn" onclick="switchTab('bookmark')">
+                    <i class="fas fa-bookmark"></i> العلامات
+                </button>
             </div>
 
             <!-- مربع البحث (يظهر في كل التبويبات) -->
@@ -887,6 +938,13 @@
             <!-- تبويب الأجزاء -->
             <div id="juzTab" class="tab-content">
                 <div class="juz-grid" id="juzList"></div>
+            </div>
+
+            <!-- تبويب العلامات -->
+            <div id="bookmarkTab" class="tab-content">
+                <div class="surah-list" id="bookmarkList">
+                    <div class="loader"><i class="fas fa-spinner fa-spin"></i> جاري التحميل...</div>
+                </div>
             </div>
         </div>
 
@@ -911,6 +969,9 @@
                     <span class="info-badge" id="locationInfo">سورة الفاتحة</span>
                     <button class="nav-btn" onclick="shareSurah()">
                         <i class="fas fa-share-alt"></i> مشاركة
+                    </button>
+                    <button class="nav-btn" onclick="toggleBookmark()" id="bookmarkBtn">
+                        <i class="far fa-bookmark"></i>
                     </button>
                 </div>
 
@@ -941,6 +1002,19 @@
                 </div>
             </div>
 
+            <!-- أدوات القراءة -->
+            <div class="reading-controls">
+                <button onclick="scrollToTop()">
+                    <i class="fas fa-arrow-up"></i> بداية السورة
+                </button>
+                <button onclick="scrollToBottom()">
+                    <i class="fas fa-arrow-down"></i> نهاية السورة
+                </button>
+                <button onclick="copyAllAyahs()">
+                    <i class="fas fa-copy"></i> نسخ السورة
+                </button>
+            </div>
+
             <!-- المصحف -->
             <div class="mushaf" id="ayahContainer" style="font-size: var(--font-size-base);">
                 <div class="loader"><i class="fas fa-spinner fa-spin"></i> جاري التحميل...</div>
@@ -967,7 +1041,9 @@
         <button class="player-btn" onclick="togglePlay()" id="playPauseBtn"><i class="fas fa-play"></i></button>
         <button class="player-btn" onclick="nextAyah()" id="nextBtn"><i class="fas fa-step-forward"></i></button>
         <div class="progress-container">
-            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+            <div class="progress-bar" id="progressBar" onclick="seekAudio(event)">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
             <span class="progress-text" id="ayahCounter">0/0</span>
         </div>
         <audio id="audio" preload="none"></audio>
@@ -982,20 +1058,22 @@
     <script>
         // ========== إعدادات ==========
         const API_QURAN = "https://api.alquran.cloud/v1";
-        const API_MP3 = "https://mp3quran.net/api/v3"; // المصدر الجديد للصوت
+        const API_MP3 = "https://mp3quran.net/api/v3";
         
         // ========== المتغيرات العامة ==========
         let allSurahs = [];
         let ayahs = [];
         let currentIndex = 0;
         let currentSurahNumber = null;
+        let currentSurahName = '';
+        let currentSurahType = '';
         let isPlaying = false;
         
-        // بيانات القارئ الحالي (سيتم جلبها من API)
         let currentReciter = null;
         let currentMoshaf = null;
         
         let fontSize = parseInt(localStorage.getItem('fontSize')) || 26;
+        let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
 
         // عناصر DOM
         const homeDiv = document.getElementById('home');
@@ -1004,6 +1082,7 @@
         const surahListDiv = document.getElementById('surahList');
         const juzListDiv = document.getElementById('juzList');
         const juzSurahsList = document.getElementById('juzSurahsList');
+        const bookmarkListDiv = document.getElementById('bookmarkList');
         const juzTitle = document.getElementById('juzTitle');
         const ayahContainer = document.getElementById('ayahContainer');
         const audio = document.getElementById('audio');
@@ -1020,9 +1099,11 @@
         const notification = document.getElementById('notification');
         const ayahCounter = document.getElementById('ayahCounter');
         const progressFill = document.getElementById('progressFill');
+        const progressBar = document.getElementById('progressBar');
         const recitersContainer = document.getElementById('recitersContainer');
         const tafseerModal = document.getElementById('tafseerModal');
         const tafseerText = document.getElementById('tafseerText');
+        const bookmarkBtn = document.getElementById('bookmarkBtn');
 
         // ========== حفظ آخر قراءة ==========
         const LAST_READ_KEY = 'lastRead';
@@ -1047,12 +1128,12 @@
                             openSurah(
                                 lastRead.surahNumber,
                                 lastRead.surahName,
-                                'Meccan', // سيتم تحديث النوع لاحقاً
+                                'Meccan',
                                 0
                             );
                             setTimeout(() => {
                                 if (lastRead.ayahIndex > 0) {
-                                    playAyah(lastRead.ayahIndex);
+                                    scrollToAyah(lastRead.ayahIndex);
                                 }
                             }, 1500);
                         }
@@ -1081,19 +1162,24 @@
                 juzSurahsPage.style.display = 'none';
                 readerDiv.style.display = 'none';
                 loadJuzList();
+            } else if (tab === 'bookmark') {
+                document.querySelectorAll('.tab-btn')[2].classList.add('active');
+                document.getElementById('bookmarkTab').classList.add('active');
+                homeDiv.style.display = 'block';
+                juzSurahsPage.style.display = 'none';
+                readerDiv.style.display = 'none';
+                displayBookmarks();
             }
         };
 
-        // ========== تحميل قائمة القراء من API الجديد ==========
+        // ========== تحميل قائمة القراء ==========
         async function fetchReciters() {
             try {
                 const res = await fetch(`${API_MP3}/reciters?language=ar`);
                 const data = await res.json();
                 
-                // حفظ القراء في localStorage لتجنب التحميل المتكرر
                 localStorage.setItem('recitersList', JSON.stringify(data.reciters));
                 
-                // تعيين قارئ افتراضي (مشاري العفاسي - id: 6)
                 const defaultReciter = data.reciters.find(r => r.id === 6) || data.reciters[0];
                 setCurrentReciter(defaultReciter);
                 
@@ -1102,7 +1188,6 @@
                 console.error('خطأ في تحميل القراء:', e);
                 showNotification('فشل تحميل قائمة القراء');
                 
-                // محاولة تحميل القائمة من localStorage
                 const cached = localStorage.getItem('recitersList');
                 if (cached) {
                     const reciters = JSON.parse(cached);
@@ -1113,10 +1198,8 @@
 
         function setCurrentReciter(reciter) {
             currentReciter = reciter;
-            // نختار أول مصحف في قائمة المصاحف (غالباً هو المصحف المرتل)
             currentMoshaf = reciter.moshaf[0];
             
-            // حفظ في localStorage
             localStorage.setItem('currentReciterId', reciter.id);
             localStorage.setItem('currentMoshafId', currentMoshaf.id);
         }
@@ -1124,13 +1207,11 @@
         function displayReciters(reciters) {
             recitersContainer.innerHTML = '';
             reciters.forEach(reciter => {
-                // نأخذ أول مصحف للصورة والاسم
                 const moshaf = reciter.moshaf[0];
                 const div = document.createElement('div');
                 div.className = `reciter-item ${currentReciter && reciter.id === currentReciter.id ? 'active' : ''}`;
                 div.setAttribute('data-id', reciter.id);
                 
-                // إنشاء صورة افتراضية بالحرف الأول من اسم القارئ
                 const firstLetter = reciter.name.charAt(0);
                 div.innerHTML = `
                     <img src="https://via.placeholder.com/50x50/0a3328/d4af37?text=${firstLetter}" 
@@ -1146,7 +1227,6 @@
         function selectReciter(reciter) {
             setCurrentReciter(reciter);
             
-            // تحديث الواجهة
             document.querySelectorAll('.reciter-item').forEach(item => {
                 item.classList.remove('active');
                 if (item.dataset.id == reciter.id) {
@@ -1154,7 +1234,6 @@
                 }
             });
             
-            // إيقاف التشغيل الحالي
             if (!audio.paused) {
                 audio.pause();
                 playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
@@ -1223,7 +1302,6 @@
                 const res = await fetch(`${API_QURAN}/juz/${juzNumber}/quran-uthmani`);
                 const data = await res.json();
                 
-                // تجميع السور الفريدة في هذا الجزء
                 const surahsInJuz = [];
                 const seen = new Set();
                 data.data.ayahs.forEach(ayah => {
@@ -1272,26 +1350,29 @@
                 juzSurahsPage.style.display = 'none';
                 readerDiv.style.display = 'block';
                 
-                // تحديث معلومات السورة
+                currentSurahNumber = number;
+                currentSurahName = name;
+                currentSurahType = type;
+                
                 surahNameSpan.innerHTML = `<i class="fas fa-quran"></i> سورة ${name}`;
                 surahStats.textContent = `${ayahsCount} آيات`;
                 surahType.textContent = type === 'Meccan' ? 'مكية' : 'مدنية';
                 locationInfo.textContent = `سورة ${name}`;
                 
+                // تحديث زر bookmark
+                updateBookmarkButton();
+                
                 ayahContainer.innerHTML = '<div class="loader"><i class="fas fa-spinner fa-spin"></i> جاري التحميل...</div>';
                 playerDiv.classList.add('hidden');
 
-                // تحميل الآيات
                 const res = await fetch(`${API_QURAN}/surah/${number}/quran-uthmani`);
                 const data = await res.json();
                 ayahs = data.data.ayahs;
-                currentSurahNumber = number;
                 currentIndex = 0;
 
-                // حفظ آخر قراءة
                 saveLastRead(number, 0, name);
-
                 renderAyahs();
+                
                 playerDiv.classList.remove('hidden');
                 updateButtonsState();
                 updateCounter();
@@ -1304,7 +1385,6 @@
         function renderAyahs() {
             ayahContainer.innerHTML = '';
             
-            // إضافة البسملة (باستثناء سورة التوبة)
             if (currentSurahNumber !== 9) {
                 const b = document.createElement('div');
                 b.className = 'bismillah';
@@ -1341,6 +1421,35 @@
             });
             
             if (ayahs.length) highlightAyah();
+        }
+
+        // ========== التمرير إلى آية معينة ==========
+        function scrollToAyah(index) {
+            currentIndex = index;
+            highlightAyah();
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToBottom() {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+
+        // ========== نسخ جميع الآيات ==========
+        function copyAllAyahs() {
+            let text = '';
+            if (currentSurahNumber !== 9) {
+                text += 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ\n';
+            }
+            ayahs.forEach((a, i) => {
+                text += a.text + ' ' + a.numberInSurah + ' ';
+            });
+            
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification('تم نسخ السورة كاملة');
+            });
         }
 
         // ========== التفسير ==========
@@ -1386,22 +1495,18 @@
             setTimeout(() => notification.style.display = 'none', 1500);
         }
 
-        // ========== مشغل الصوت (معدل بالكامل مع حل مشكلة التظليل) ==========
+        // ========== مشغل الصوت ==========
         async function playAyah(index) {
             if (index < 0 || index >= ayahs.length) return;
             
-            // التأكد من وجود قارئ ومصحف محدد
             if (!currentReciter || !currentMoshaf) {
                 showNotification('لم يتم اختيار قارئ بعد');
                 return;
             }
             
             currentIndex = index;
-            
-            // تطبيق التظليل على الآية الحالية
             highlightAyah();
             
-            // حفظ آخر آية
             if (currentSurahNumber) {
                 saveLastRead(currentSurahNumber, index, surahNameSpan.innerText.replace('سورة', '').trim());
             }
@@ -1409,16 +1514,13 @@
             try {
                 playPauseBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i>';
                 
-                // بناء رابط الصوت حسب بنية mp3quran.net
-                // الرابط: server + surahNumber + .mp3
-                const surahNumber = currentSurahNumber.toString().padStart(3, '0'); // 001, 002, ...
+                const surahNumber = currentSurahNumber.toString().padStart(3, '0');
                 const audioUrl = `${currentMoshaf.server}${surahNumber}.mp3`;
                 
                 console.log('تحميل الصوت من:', audioUrl);
                 
-                // التأكد من تحميل الصوت الجديد
                 audio.src = audioUrl;
-                audio.load(); // إضافة load للتأكد من تحميل الملف الجديد
+                audio.load();
                 
                 await audio.play();
                 
@@ -1442,15 +1544,12 @@
         }
 
         function highlightAyah() {
-            // إزالة التظليل من جميع الآيات
             document.querySelectorAll('.ayah-text').forEach(a => a.classList.remove('active-ayah'));
             
-            // إضافة التظليل للآية الحالية
             const currentAyahElement = document.getElementById(`ayah-${currentIndex}`);
             if (currentAyahElement) {
                 currentAyahElement.classList.add('active-ayah');
                 
-                // تمرير الصفحة إلى موقع الآية بشكل سلس
                 currentAyahElement.scrollIntoView({ 
                     behavior: 'smooth', 
                     block: 'center',
@@ -1458,7 +1557,6 @@
                 });
             }
             
-            // تحديث العداد
             updateCounter();
         }
 
@@ -1519,6 +1617,21 @@
             isPlaying = false;
         });
 
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                progressFill.style.width = `${progress}%`;
+            }
+        });
+
+        window.seekAudio = function(event) {
+            if (audio.duration) {
+                const rect = progressBar.getBoundingClientRect();
+                const pos = (event.clientX - rect.left) / rect.width;
+                audio.currentTime = pos * audio.duration;
+            }
+        };
+
         // ========== العودة للرئيسية ==========
         window.goHome = function() {
             homeDiv.style.display = 'block';
@@ -1532,9 +1645,74 @@
         // ========== مشاركة السورة ==========
         window.shareSurah = function() {
             const name = surahNameSpan.innerText.replace('سورة', '').trim();
-            navigator.clipboard.writeText(window.location.href);
-            showNotification('تم نسخ الرابط');
+            if (navigator.share) {
+                navigator.share({
+                    title: `سورة ${name}`,
+                    text: `قراءة سورة ${name} من القرآن الكريم`,
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                showNotification('تم نسخ الرابط');
+            }
         };
+
+        // ========== العلامات المرجعية ==========
+        function toggleBookmark() {
+            const bookmarkKey = `surah_${currentSurahNumber}`;
+            const index = bookmarks.indexOf(bookmarkKey);
+            
+            if (index === -1) {
+                bookmarks.push(bookmarkKey);
+                showNotification('تمت إضافة السورة إلى العلامات');
+            } else {
+                bookmarks.splice(index, 1);
+                showNotification('تمت إزالة السورة من العلامات');
+            }
+            
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            updateBookmarkButton();
+        }
+
+        function updateBookmarkButton() {
+            const bookmarkKey = `surah_${currentSurahNumber}`;
+            if (bookmarks.includes(bookmarkKey)) {
+                bookmarkBtn.innerHTML = '<i class="fas fa-bookmark"></i>';
+            } else {
+                bookmarkBtn.innerHTML = '<i class="far fa-bookmark"></i>';
+            }
+        }
+
+        function displayBookmarks() {
+            bookmarkListDiv.innerHTML = '';
+            
+            if (bookmarks.length === 0) {
+                bookmarkListDiv.innerHTML = '<div class="loader">لا توجد علامات مرجعية</div>';
+                return;
+            }
+            
+            bookmarks.forEach(key => {
+                const surahNumber = parseInt(key.replace('surah_', ''));
+                const surah = allSurahs.find(s => s.number === surahNumber);
+                
+                if (surah) {
+                    const card = document.createElement('div');
+                    card.className = 'surah-card';
+                    card.innerHTML = `
+                        <div class="surah-name">
+                            <i class="fas fa-quran"></i>
+                            ${surah.name}
+                        </div>
+                        <div class="surah-meta">
+                            <span class="surah-type">${surah.revelationType === 'Meccan' ? 'مكية' : 'مدنية'}</span>
+                            <span class="surah-number">${surah.number}</span>
+                        </div>
+                    `;
+                    card.onclick = () => openSurah(surah.number, surah.name, surah.revelationType, surah.numberOfAyahs);
+                    bookmarkListDiv.appendChild(card);
+                }
+            });
+        }
 
         // ========== تغيير حجم الخط ==========
         window.changeFontSize = function(delta) {
@@ -1554,7 +1732,11 @@
                     displaySurahs(allSurahs);
                     return;
                 }
-                const filtered = allSurahs.filter(s => s.name.includes(q));
+                const filtered = allSurahs.filter(s => 
+                    s.name.includes(q) || 
+                    s.englishName.toLowerCase().includes(q) ||
+                    s.number.toString().includes(q)
+                );
                 displaySurahs(filtered);
             }, 300);
         });
@@ -1566,16 +1748,10 @@
 
         // ========== بدء التطبيق ==========
         async function initApp() {
-            // تحميل قائمة القراء من API الجديد
             await fetchReciters();
-            
-            // تحميل السور
             await loadSurahs();
-            
-            // تحميل قائمة الأجزاء
             loadJuzList();
-            
-            // تحميل آخر قراءة بعد قليل
+            displayBookmarks();
             setTimeout(loadLastRead, 2000);
         }
 
