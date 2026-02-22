@@ -273,7 +273,7 @@
             margin-right: auto;
         }
 
-        /* ===== القراء ===== */
+        /* ===== القراء مع الصور ===== */
         .reciters-section {
             margin-top: 15px;
         }
@@ -294,24 +294,56 @@
 
         .reciters-list {
             display: flex;
-            gap: 12px;
+            gap: 15px;
             width: max-content;
+            padding: 5px;
         }
 
         .reciter-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
             background: rgba(10, 51, 40, 0.7);
             border: 2px solid #d4af37;
-            border-radius: 50px;
-            padding: 8px 20px;
+            border-radius: 60px;
             cursor: pointer;
             transition: 0.3s;
-            min-width: 120px;
-            text-align: center;
+            min-width: 110px;
+        }
+
+        .reciter-item:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateY(-3px);
         }
 
         .reciter-item.active {
             background: #d4af37;
+            border-color: #e6d5a8;
+        }
+
+        .reciter-item.active span {
             color: #0a3328;
+            font-weight: 700;
+        }
+
+        .reciter-item img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #d4af37;
+        }
+
+        .reciter-item.active img {
+            border-color: #0a3328;
+        }
+
+        .reciter-item span {
+            font-size: 14px;
+            color: #f5e6d3;
+            font-weight: 600;
         }
 
         /* ===== المصحف ===== */
@@ -543,7 +575,7 @@
                     </button>
                 </div>
 
-                <!-- القراء -->
+                <!-- القراء مع الصور -->
                 <div class="reciters-section">
                     <div class="reciters-label">
                         <i class="fas fa-microphone-alt"></i>
@@ -596,22 +628,41 @@
         const API_QURAN = "https://api.alquran.cloud/v1";
         const API_MP3 = "https://mp3quran.net/api/v3";
 
-        // ========== القراء ==========
+        // ========== القراء مع الصور ==========
         const reciters = [
-            { id: 4, name: 'محمد المنشاوي', img: '3.jpeg' },
-            { id: 1, name: 'عبد الباسط عبد الصمد', img: '2.jpeg' },
-            { id: 6, name: 'مشاري العفاسي', img: '1.jpeg' },
-            { id: 235, name: 'ياسر الدوسري', img: '4.jpeg' }
+            { 
+                id: 4, 
+                name: 'محمد المنشاوي', 
+                img: 'https://imgur.com/4LQpP5b.jpg',
+                server: 'https://server11.mp3quran.net/minsh/'
+            },
+            { 
+                id: 1, 
+                name: 'عبد الباسط عبد الصمد', 
+                img: 'https://imgur.com/2BrWg9D.jpg',
+                server: 'https://server11.mp3quran.net/basit/'
+            },
+            { 
+                id: 6, 
+                name: 'مشاري العفاسي', 
+                img: 'https://imgur.com/SIYcrU6.jpg',
+                server: 'https://server6.mp3quran.net/afasy/'
+            },
+            { 
+                id: 235, 
+                name: 'ياسر الدوسري', 
+                img: 'https://imgur.com/6yYxYqL.jpg',
+                server: 'https://server11.mp3quran.net/dosary/'
+            }
         ];
 
         // ========== المتغيرات ==========
         let allSurahs = [];
         let currentSurah = null;
-        let currentReciter = reciters[0];
+        let currentReciter = reciters[0]; // مشاري العفاسي افتراضياً
         let currentSurahNumber = 1;
         let ayahs = [];
         let isPlaying = false;
-        let recitersData = [];
 
         // عناصر DOM
         const homePage = document.getElementById('homePage');
@@ -631,39 +682,20 @@
         const recitersList = document.getElementById('recitersList');
         const nowPlaying = document.getElementById('nowPlaying');
         const currentReciterSpan = document.getElementById('currentReciter');
+        const surahName = document.getElementById('surahName');
+        const surahNameLarge = document.getElementById('surahNameLarge');
+        const surahInfo = document.getElementById('surahInfo');
 
-        // ========== تحميل بيانات القراء من API ==========
-        async function loadRecitersFromAPI() {
-            try {
-                const res = await fetch(`${API_MP3}/reciters?language=ar`);
-                const data = await res.json();
-                
-                // فلترة القراء المطلوبين
-                const filteredReciters = data.reciters.filter(r => 
-                    [4, 1, 6, 235].includes(r.id)
-                );
-                
-                if (filteredReciters.length > 0) {
-                    recitersData = filteredReciters;
-                    currentReciter = recitersData[0];
-                    displayReciters();
-                }
-            } catch (e) {
-                console.log('خطأ في تحميل القراء، استخدام البيانات الافتراضية');
-                // استخدام البيانات الافتراضية
-                recitersData = reciters.map(r => ({ id: r.id, name: r.name }));
-                currentReciter = recitersData[0];
-                displayReciters();
-            }
-        }
-
-        // ========== عرض القراء ==========
+        // ========== عرض القراء مع الصور ==========
         function displayReciters() {
             recitersList.innerHTML = '';
-            recitersData.forEach(reciter => {
+            reciters.forEach(reciter => {
                 const div = document.createElement('div');
                 div.className = `reciter-item ${reciter.id === currentReciter.id ? 'active' : ''}`;
-                div.textContent = reciter.name;
+                div.innerHTML = `
+                    <img src="${reciter.img}" alt="${reciter.name}" onerror="this.src='https://via.placeholder.com/60x60/0a3328/d4af37?text=${reciter.name.charAt(0)}'">
+                    <span>${reciter.name}</span>
+                `;
                 div.onclick = () => selectReciter(reciter);
                 recitersList.appendChild(div);
             });
@@ -673,10 +705,10 @@
             currentReciter = reciter;
             document.querySelectorAll('.reciter-item').forEach(item => {
                 item.classList.remove('active');
-                if (item.textContent === reciter.name) {
-                    item.classList.add('active');
-                }
             });
+            event.currentTarget.classList.add('active');
+            
+            currentReciterSpan.textContent = reciter.name;
             
             if (currentSurahNumber) {
                 loadSurahAudio(currentSurahNumber);
@@ -789,9 +821,9 @@
                 currentSurah = surah;
                 currentSurahNumber = surah.number;
                 
-                document.getElementById('surahName').textContent = `سورة ${surah.name}`;
-                document.getElementById('surahNameLarge').textContent = `سورة ${surah.name}`;
-                document.getElementById('surahInfo').innerHTML = `
+                surahName.textContent = `سورة ${surah.name}`;
+                surahNameLarge.textContent = `سورة ${surah.name}`;
+                surahInfo.innerHTML = `
                     <span><i class="fas fa-book-open"></i> ${surah.numberOfAyahs} آيات</span>
                     <span><i class="fas fa-city"></i> ${surah.revelationType === 'Meccan' ? 'مكية' : 'مدنية'}</span>
                 `;
@@ -863,20 +895,14 @@
         // ========== تحميل الصوت ==========
         async function loadSurahAudio(surahNumber) {
             try {
-                // البحث عن القارئ في API
-                const res = await fetch(`${API_MP3}/reciters?reciter=${currentReciter.id}&language=ar`);
-                const data = await res.json();
+                const surahNumStr = surahNumber.toString().padStart(3, '0');
+                const audioUrl = `${currentReciter.server}${surahNumStr}.mp3`;
                 
-                if (data.reciters && data.reciters[0] && data.reciters[0].moshaf) {
-                    const moshaf = data.reciters[0].moshaf[0];
-                    const surahNumStr = surahNumber.toString().padStart(3, '0');
-                    const audioUrl = `${moshaf.server}${surahNumStr}.mp3`;
-                    
-                    audio.src = audioUrl;
-                    audio.load();
-                    
-                    updateNavButtons();
-                }
+                console.log('تحميل:', audioUrl);
+                audio.src = audioUrl;
+                audio.load();
+                
+                updateNavButtons();
             } catch (e) {
                 console.log('خطأ في تحميل الصوت:', e);
                 showNotification('فشل تحميل الصوت');
@@ -1015,7 +1041,7 @@
         // ========== بدء التطبيق ==========
         async function init() {
             updateDate();
-            await loadRecitersFromAPI();
+            displayReciters();
             await loadSurahs();
             loadJuzList();
         }
